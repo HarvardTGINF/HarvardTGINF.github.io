@@ -1,0 +1,394 @@
+<h1 id="sequence-diagrams">Sequence diagrams</h1>
+
+<blockquote>
+  <p>A Sequence diagram is an interaction diagram that shows how processes operate with one another and in what order.</p>
+</blockquote>
+
+<p>Mermaid can render sequence diagrams. The code snippet below:</p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>%% Example of sequence diagram
+sequenceDiagram
+    Alice-&gt;&gt;John: Hello John, how are you?
+    John--&gt;&gt;Alice: Great!
+</code></pre></div></div>
+
+<p>Renders the following diagram:</p>
+
+<pre><code class="language-mermaid">sequenceDiagram
+    Alice-&gt;&gt;John: Hello John, how are you?
+    John--&gt;&gt;Alice: Great!
+</code></pre>
+
+<h2 id="syntax">Syntax</h2>
+
+<h3 id="participants">Participants</h3>
+
+<p>The participants can be defined implicitly as in the first example on this page. The participants or actors are
+rendered in order of appearance in the diagram source text. Sometimes you might want to show the participants in a
+different order than how they appear in the first message. It is possible to specify the actor’s order of
+appearance by doing the following:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>%% Example of sequence diagram
+sequenceDiagram
+    participant John
+    participant Alice
+    Alice-&gt;&gt;John: Hello John, how are you?
+    John--&gt;&gt;Alice: Great!
+</code></pre></div></div>
+
+<p>Renders to the diagram below:</p>
+
+<pre><code class="language-mermaid">sequenceDiagram
+    participant John
+    participant Alice
+    Alice-&gt;&gt;John: Hello John, how are you?
+    John--&gt;&gt;Alice: Great!
+</code></pre>
+
+<h2 id="messages">Messages</h2>
+<p>Messages can be of two displayed either solid or with a dotted line.</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>[Actor][Arrow][Actor]:Message text
+</code></pre></div></div>
+
+<p>There are six types of arrows currently supported:</p>
+
+<p>-&gt; which will render a solid line without arrow</p>
+
+<p>–&gt; which will render a dotted line  without arrow</p>
+
+<p>-» which will render a solid line with arrowhead</p>
+
+<p>–» which will render a dotted line  with arrowhead</p>
+
+<p>-x which will render a solid line with a cross at the end (async)</p>
+
+<p>–x which will render a dotted line with a cross at the end (async)</p>
+
+<h2 id="activations">Activations</h2>
+<p>It is possible to activate and deactivate an actor. (de)activation can be dedicated declarations:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>sequenceDiagram
+    Alice-&gt;&gt;John: Hello John, how are you?
+    activate John
+    John--&gt;&gt;Alice: Great!
+    deactivate John
+</code></pre></div></div>
+
+<p>Renders to the diagram below:</p>
+
+<pre><code class="language-mermaid">sequenceDiagram
+    Alice-&gt;&gt;John: Hello John, how are you?
+    activate John
+    John--&gt;&gt;Alice: Great!
+    deactivate John
+</code></pre>
+
+<p>There is also a shortcut notation by appending <code class="language-plaintext highlighter-rouge">+</code>/<code class="language-plaintext highlighter-rouge">-</code> suffix to the message arrow:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>sequenceDiagram
+    Alice-&gt;&gt;+John: Hello John, how are you?
+    John--&gt;&gt;-Alice: Great!
+</code></pre></div></div>
+
+<p>Activations can be stacked for same actor:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>sequenceDiagram
+    Alice-&gt;&gt;+John: Hello John, how are you?
+    Alice-&gt;&gt;+John: John, can yoy hear me?
+    John--&gt;&gt;-Alice: Hi Alice, I can hear you!
+    John--&gt;&gt;-Alice: I feel great!
+</code></pre></div></div>
+
+<p>Stacked activations look like this:</p>
+
+<pre><code class="language-mermaid">sequenceDiagram
+    Alice-&gt;&gt;+John: Hello John, how are you?
+    Alice-&gt;&gt;+John: John, can yoy hear me?
+    John--&gt;&gt;-Alice: Hi Alice, I can hear you!
+    John--&gt;&gt;-Alice: I feel great!
+</code></pre>
+
+<h2 id="notes">Notes</h2>
+<p>It is possible to add notes to a sequence diagram. This is done by the notation
+Note [ right of | left of | over ] [Actor]: Text in note content</p>
+
+<p>See the example below:</p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>%% Example of sequence diagram
+sequenceDiagram
+    participant John
+    Note right of John: Text in note
+</code></pre></div></div>
+
+<p>Renders to the diagram below:</p>
+
+<pre><code class="language-mermaid">sequenceDiagram
+    participant John
+    Note right of John: Text in note
+</code></pre>
+
+<p>It is also possible to create notes spanning two participants:</p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>sequenceDiagram
+    Alice-&gt;John: Hello John, how are you?
+    Note over Alice,John: A typical interaction
+</code></pre></div></div>
+
+<pre><code class="language-mermaid">sequenceDiagram
+    Alice-&gt;John: Hello John, how are you?
+    Note over Alice,John: A typical interaction
+</code></pre>
+
+<h2 id="loops">Loops</h2>
+<p>It is possible to express loops in a sequence diagram. This is done by the notation</p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>loop Loop text
+... statements ...
+end
+</code></pre></div></div>
+
+<p>See the example below</p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>%% Example of sequence diagram
+sequenceDiagram
+    Alice-&gt;John: Hello John, how are you?
+    loop Reply every minute
+        John--&gt;Alice: Great!
+    end
+</code></pre></div></div>
+
+<pre><code class="language-mermaid">sequenceDiagram
+    Alice-&gt;John: Hello John, how are you?
+    loop Every minute
+        John--&gt;Alice: Great!
+    end
+</code></pre>
+
+<h2 id="alt">Alt</h2>
+<p>It is possible to express alternative paths in a sequence diagram. This is done by the notation</p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>alt Describing text
+... statements ...
+else
+... statements ...
+end
+</code></pre></div></div>
+
+<p>or if there is sequence that is optional (if without else).</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>opt Describing text
+... statements ...
+end
+</code></pre></div></div>
+
+<p>See the example below</p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>%% Example of sequence diagram
+    sequenceDiagram
+        Alice-&gt;&gt;Bob: Hello Bob, how are you?
+        alt is sick
+            Bob-&gt;&gt;Alice: Not so good :(
+        else is well
+            Bob-&gt;&gt;Alice: Feeling fresh like a daisy
+        end
+        opt Extra response
+            Bob-&gt;&gt;Alice: Thanks for asking
+        end
+
+</code></pre></div></div>
+
+<pre><code class="language-mermaid">sequenceDiagram
+    Alice-&gt;&gt;Bob: Hello Bob, how are you?
+    alt is sick
+        Bob-&gt;&gt;Alice: Not so good :(
+    else is well
+        Bob-&gt;&gt;Alice: Feeling fresh like a daisy
+    end
+    opt Extra response
+        Bob-&gt;&gt;Alice: Thanks for asking
+    end
+</code></pre>
+<h2 id="styling">Styling</h2>
+
+<p>Styling of the a sequence diagram is done by defining a number of css classes.  During rendering these classes are extracted from the</p>
+
+<h3 id="classes-used">Classes used</h3>
+
+<table>
+  <thead>
+    <tr>
+      <th>Class</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>actor</td>
+      <td>Style for the actor box at the top of the diagram.</td>
+    </tr>
+    <tr>
+      <td>text.actor</td>
+      <td>Styles for text in the actor box at the top of the diagram.</td>
+    </tr>
+    <tr>
+      <td>actor-line</td>
+      <td>The vertical line for an actor.</td>
+    </tr>
+    <tr>
+      <td>messageLine0</td>
+      <td>Styles for the solid message line.</td>
+    </tr>
+    <tr>
+      <td>messageLine1</td>
+      <td>Styles for the dotted message line.</td>
+    </tr>
+    <tr>
+      <td>messageText</td>
+      <td>Defines styles for the text on the message arrows.</td>
+    </tr>
+    <tr>
+      <td>labelBox</td>
+      <td>Defines styles label to left in a loop.</td>
+    </tr>
+    <tr>
+      <td>labelText</td>
+      <td>Styles for the text in label for loops.</td>
+    </tr>
+    <tr>
+      <td>loopText</td>
+      <td>Styles for the text in the loop box.</td>
+    </tr>
+    <tr>
+      <td>loopLine</td>
+      <td>Defines styles for the lines in the loop box.</td>
+    </tr>
+    <tr>
+      <td>note</td>
+      <td>Styles for the note box.</td>
+    </tr>
+    <tr>
+      <td>noteText</td>
+      <td>Styles for the text on in the note boxes.</td>
+    </tr>
+  </tbody>
+</table>
+
+<h3 id="sample-stylesheet">Sample stylesheet</h3>
+
+<div class="language-css highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+<span class="nt">body</span> <span class="p">{</span>
+    <span class="nl">background</span><span class="p">:</span> <span class="no">white</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="nc">.actor</span> <span class="p">{</span>
+    <span class="py">stroke</span><span class="p">:</span> <span class="m">#CCCCFF</span><span class="p">;</span>
+    <span class="py">fill</span><span class="p">:</span> <span class="m">#ECECFF</span><span class="p">;</span>
+<span class="p">}</span>
+<span class="nt">text</span><span class="nc">.actor</span> <span class="p">{</span>
+    <span class="py">fill</span><span class="p">:</span><span class="no">black</span><span class="p">;</span>
+    <span class="py">stroke</span><span class="p">:</span><span class="nb">none</span><span class="p">;</span>
+    <span class="nl">font-family</span><span class="p">:</span> <span class="n">Helvetica</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="nc">.actor-line</span> <span class="p">{</span>
+    <span class="py">stroke</span><span class="p">:</span><span class="n">grey</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="nc">.messageLine0</span> <span class="p">{</span>
+    <span class="py">stroke-width</span><span class="p">:</span><span class="m">1.5</span><span class="p">;</span>
+    <span class="py">stroke-dasharray</span><span class="p">:</span> <span class="s1">"2 2"</span><span class="p">;</span>
+    <span class="py">marker-end</span><span class="p">:</span><span class="s1">"url(#arrowhead)"</span><span class="p">;</span>
+    <span class="py">stroke</span><span class="p">:</span><span class="no">black</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="nc">.messageLine1</span> <span class="p">{</span>
+    <span class="py">stroke-width</span><span class="p">:</span><span class="m">1.5</span><span class="p">;</span>
+    <span class="py">stroke-dasharray</span><span class="p">:</span> <span class="s1">"2 2"</span><span class="p">;</span>
+    <span class="py">stroke</span><span class="p">:</span><span class="no">black</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="nf">#arrowhead</span> <span class="p">{</span>
+    <span class="py">fill</span><span class="p">:</span><span class="no">black</span><span class="p">;</span>
+
+<span class="p">}</span>
+
+<span class="nc">.messageText</span> <span class="p">{</span>
+    <span class="py">fill</span><span class="p">:</span><span class="no">black</span><span class="p">;</span>
+    <span class="py">stroke</span><span class="p">:</span><span class="nb">none</span><span class="p">;</span>
+    <span class="nl">font-family</span><span class="p">:</span> <span class="s2">'trebuchet ms'</span><span class="p">,</span> <span class="n">verdana</span><span class="p">,</span> <span class="n">arial</span><span class="p">;</span>
+    <span class="nl">font-size</span><span class="p">:</span><span class="m">14px</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="nc">.labelBox</span> <span class="p">{</span>
+    <span class="py">stroke</span><span class="p">:</span> <span class="m">#CCCCFF</span><span class="p">;</span>
+    <span class="py">fill</span><span class="p">:</span> <span class="m">#ECECFF</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="nc">.labelText</span> <span class="p">{</span>
+    <span class="py">fill</span><span class="p">:</span><span class="no">black</span><span class="p">;</span>
+    <span class="py">stroke</span><span class="p">:</span><span class="nb">none</span><span class="p">;</span>
+    <span class="nl">font-family</span><span class="p">:</span> <span class="s2">'trebuchet ms'</span><span class="p">,</span> <span class="n">verdana</span><span class="p">,</span> <span class="n">arial</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="nc">.loopText</span> <span class="p">{</span>
+    <span class="py">fill</span><span class="p">:</span><span class="no">black</span><span class="p">;</span>
+    <span class="py">stroke</span><span class="p">:</span><span class="nb">none</span><span class="p">;</span>
+    <span class="nl">font-family</span><span class="p">:</span> <span class="s2">'trebuchet ms'</span><span class="p">,</span> <span class="n">verdana</span><span class="p">,</span> <span class="n">arial</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="nc">.loopLine</span> <span class="p">{</span>
+    <span class="py">stroke-width</span><span class="p">:</span><span class="m">2</span><span class="p">;</span>
+    <span class="py">stroke-dasharray</span><span class="p">:</span> <span class="s1">"2 2"</span><span class="p">;</span>
+    <span class="py">marker-end</span><span class="p">:</span><span class="s1">"url(#arrowhead)"</span><span class="p">;</span>
+    <span class="py">stroke</span><span class="p">:</span> <span class="m">#CCCCFF</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="nc">.note</span> <span class="p">{</span>
+    <span class="py">stroke</span><span class="p">:</span> <span class="m">#decc93</span><span class="p">;</span>
+    <span class="py">stroke</span><span class="p">:</span> <span class="m">#CCCCFF</span><span class="p">;</span>
+    <span class="py">fill</span><span class="p">:</span> <span class="m">#fff5ad</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="nc">.noteText</span> <span class="p">{</span>
+    <span class="py">fill</span><span class="p">:</span><span class="no">black</span><span class="p">;</span>
+    <span class="py">stroke</span><span class="p">:</span><span class="nb">none</span><span class="p">;</span>
+    <span class="nl">font-family</span><span class="p">:</span> <span class="s2">'trebuchet ms'</span><span class="p">,</span> <span class="n">verdana</span><span class="p">,</span> <span class="n">arial</span><span class="p">;</span>
+    <span class="nl">font-size</span><span class="p">:</span><span class="m">14px</span><span class="p">;</span>
+<span class="p">}</span>
+
+</code></pre></div></div>
+<h2 id="configuration">Configuration</h2>
+
+<p>Is it possible to adjust the margins for rendering the sequence diagram.</p>
+
+<p>This is done by defining <strong>mermaid.sequenceConfig</strong> or by the CLI to use a json file with the configuration. How to use
+the CLI is described in the mermaidCLI page.
+mermaid.sequenceConfig can be set to a JSON string with config parameters or the corresponding object.</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>mermaid.sequenceConfig = {
+    diagramMarginX:50,
+    diagramMarginY:10,
+    boxTextMargin:5,
+    noteMargin:10,
+    messageMargin:35,
+    mirrorActors:true
+    };
+</code></pre></div></div>
+
+<h3 id="possible-configration-params">Possible configration params:</h3>
+
+<table>
+  <thead>
+    <tr>
+      <th>Param</th>
+      <th>Descriotion</th>
+      <th>Default value</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>mirrorActor</td>
+      <td>Turns on/off the rendering of actors below the diagram as well as above it</td>
+      <td>false</td>
+    </tr>
+    <tr>
+      <td>bottomMarginAdj</td>
+      <td>Adjusts how far down the graph ended. Wide borders styles with css could generate unwantewd clipping which is why this config param exists.</td>
+      <td>1</td>
+    </tr>
+  </tbody>
+</table>
