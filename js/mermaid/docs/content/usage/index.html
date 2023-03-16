@@ -1,0 +1,398 @@
+<h1 id="usage">Usage</h1>
+<h2 id="installation">Installation</h2>
+
+<p>Either use the npm or bower package managers as per below:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>bower install mermaid --save-dev
+</code></pre></div></div>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>npm install mermaid --save-dev
+</code></pre></div></div>
+
+<p>Or download a javascript bundle and a stylesheet, e.g. the urls below are for the default style and the all-in-one javascript - note that #version# should be replaced with version of choice:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>https://cdn.rawgit.com/knsv/mermaid/#version#/dist/mermaid.css
+https://cdn.rawgit.com/knsv/mermaid/#version#/dist/mermaid.min.js
+</code></pre></div></div>
+
+<p>Ex:</p>
+<ul>
+  <li><a href="https://cdn.rawgit.com/knsv/mermaid/6.0.0/dist/mermaid.min.js">js version 6.0.0</a></li>
+</ul>
+
+<p>Checkout the <a href="https://github.com/knsv/mermaid/releases">latest version</a> and <a href="https://github.com/knsv/mermaid/tree/master/dist">other styles</a> such as <code class="language-plaintext highlighter-rouge">forest</code> and <code class="language-plaintext highlighter-rouge">dark</code>.</p>
+
+<p>There are some bundles to choose from:</p>
+<ul>
+  <li>mermaid.js, mermaid.min.js This bundle contains all the javascript libraries you need to run mermaid</li>
+  <li>mermaid.slim.js, mermaid.slim.min.js This bundle does not contain d3 which is useful for sites that already have d3 in place</li>
+  <li>mermaidAPI.js, mermaidAPI.min.js, This bundle does not contain the web integration provided in the other packages but has a render function instead returns svg code.</li>
+</ul>
+
+<p>** Important: **</p>
+<blockquote>
+  <p>It’s best to use a specific tag or commit hash in the URL (not a branch). Files are cached permanently after the first request.</p>
+</blockquote>
+
+<p>Read more about that at <a href="https://rawgit.com/">https://rawgit.com/</a></p>
+
+<h2 id="simple-usage-on-a-web-page">Simple usage on a web page</h2>
+
+<p>The easiest way to integrate mermaid on a web page requires two elements:</p>
+<ol>
+  <li>Inclusion of the mermaid framework in the html page using a script tag</li>
+  <li>A graph definition on the web page</li>
+</ol>
+
+<p>If these things are in place mermaid listens to the page load event and when fires, when the page has loaded, it will
+locate the graphs n the page and transform them to svg files.</p>
+
+<h3 id="include-mermaid-on-your-web-page">Include mermaid on your web page:</h3>
+
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;link</span> <span class="na">rel=</span><span class="s">"stylesheet"</span> <span class="na">href=</span><span class="s">"mermaid.css"</span><span class="nt">&gt;</span>
+<span class="ni">&amp;lt;</span>script src=<span class="ni">&amp;quot;</span>mermaid.min.js<span class="ni">&amp;quot;&amp;gt;&amp;lt;</span>/script<span class="ni">&amp;gt;</span>
+<span class="ni">&amp;lt;</span>script<span class="ni">&amp;gt;</span>mermaid.initialize({startOnLoad:true});<span class="ni">&amp;lt;</span>/script<span class="ni">&amp;gt;</span>
+</code></pre></div></div>
+
+<p>Further down on your page mermaid will look for tags with <code class="language-plaintext highlighter-rouge">class="mermaid"</code>. From these tags mermaid will try to
+read the chart definiton which will be replaced with the svg chart.</p>
+
+<h3 id="define-a-chart-like-this">Define a chart like this:</h3>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>&amp;lt;div class=&amp;quot;mermaid&amp;quot;&amp;gt;
+    CHART DEFINITION GOES HERE
+&amp;lt;/div&amp;gt;
+
+</code></pre></div></div>
+
+<p>Would end up like this:</p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>&amp;lt;div class=&amp;quot;mermaid&amp;quot; id=&amp;quot;mermaidChart0&amp;quot;&amp;gt;
+    &amp;lt;svg&amp;gt;
+        Chart ends up here
+    &amp;lt;/svg&amp;gt;
+&amp;lt;/div&amp;gt;
+
+</code></pre></div></div>
+<p>An id is also added to mermaid tags without id.</p>
+
+<h3 id="simple-full-example">Simple full example:</h3>
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">&lt;!DOCTYPE html&gt;</span>
+<span class="nt">&lt;html</span> <span class="na">lang=</span><span class="s">"en"</span><span class="nt">&gt;</span>
+
+<span class="nt">&lt;head&gt;</span>
+  <span class="nt">&lt;meta</span> <span class="na">charset=</span><span class="s">"utf-8"</span><span class="nt">&gt;</span>
+  <span class="c">&lt;!-- Downloaded as per http://knsv.github.io/mermaid/#installation --&gt;</span>
+  <span class="c">&lt;!-- Stored in the same directory as html file                     --&gt;</span>
+  <span class="nt">&lt;link</span> <span class="na">rel=</span><span class="s">"stylesheet"</span> <span class="na">href=</span><span class="s">"mermaid.css"</span><span class="nt">&gt;</span>
+
+  <span class="c">&lt;!-- Optional to use fontawesome                                   --&gt;</span>
+  <span class="c">&lt;!-- Downloaded as per http://fontawesome.io/get-started/          --&gt;</span>
+  <span class="c">&lt;!-- Stored in the same directory as html file                     --&gt;</span>
+  <span class="nt">&lt;script </span><span class="na">src=</span><span class="s">"https://use.fontawesome.com/7065416dc9.js"</span><span class="nt">&gt;&lt;/script&gt;</span>
+
+<span class="nt">&lt;/head&gt;</span>
+<span class="nt">&lt;body&gt;</span>
+
+  <span class="c">&lt;!-- Include mermaid on your web page:                             --&gt;</span>
+  <span class="nt">&lt;script </span><span class="na">src=</span><span class="s">"mermaid.min.js"</span><span class="nt">&gt;&lt;/script&gt;</span>
+  <span class="nt">&lt;script&gt;</span><span class="nx">mermaid</span><span class="p">.</span><span class="nx">initialize</span><span class="p">({</span><span class="na">startOnLoad</span><span class="p">:</span><span class="kc">true</span><span class="p">});</span><span class="nt">&lt;/script&gt;</span>
+
+  <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"mermaid"</span><span class="nt">&gt;</span>
+  graph LR
+      A --- B
+      B--&gt;C[fa:fa-ban forbidden]
+      B--&gt;D(fa:fa-spinner);
+  <span class="nt">&lt;/div&gt;</span>
+
+<span class="nt">&lt;/body&gt;</span>
+<span class="nt">&lt;/html&gt;</span>
+</code></pre></div></div>
+<h3 id="labels-out-of-bounds">Labels out of bounds</h3>
+
+<p>If you use dynamically loaded fonts that are loaded through CSS, such as Google fonts, mermaid should wait for the 
+whole page to have been loaded (dom + assets, particularly the fonts file).</p>
+
+<p>$(document).load(function() {
+    mermaid.initialize();
+});
+over</p>
+
+<p>$(document).ready(function() {
+    mermaid.initialize();
+});</p>
+
+<p>Not doing so will most likely result in mermaid rendering graphs that have labels out of bounds. The default integration 
+in mermaid uses the window.load event to start rendering.</p>
+
+<h3 id="calling-mermaidinit">Calling <strong>mermaid.init</strong></h3>
+<p>By default, <strong>mermaid.init</strong> will be called when the document is ready, finding all elements with
+<code class="language-plaintext highlighter-rouge">class="mermaid"</code>. If you are adding content after mermaid is loaded, or otherwise need
+finer-grained control of this behavior, you can call <code class="language-plaintext highlighter-rouge">init</code> yourself with:</p>
+<ul>
+  <li>a configuration object</li>
+  <li>some nodes, as
+    <ul>
+      <li>a node</li>
+      <li>an a array-like of nodes</li>
+      <li>or W3C selector that will find your nodes</li>
+    </ul>
+  </li>
+</ul>
+
+<p>Example:</p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>mermaid.init({noteMargin: 10}, ".someOtherClass");
+</code></pre></div></div>
+<p>Or with no config object, and a jQuery selection:</p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>mermaid.init(undefined, $("#someId .yetAnotherClass"));
+</code></pre></div></div>
+
+<aside class="warning">This type of integration is deprecated instead the preferred way of handling more complex integration is to us the mermaidAPI instead.</aside>
+
+<h2 id="usage-with-browserify">Usage with browserify</h2>
+<p>The reader is assumed to know about CommonJS style of module handling and how to use browserify. If not a good place
+to start would be http://browserify.org/ website.</p>
+
+<p>Minimalistic javascript:</p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>mermaid = require('mermaid');
+console.log('Test page! mermaid version'+mermaid.version());
+</code></pre></div></div>
+<p>Bundle the javascript with browserify.</p>
+
+<p>Us the created bundle on a web page as per example below:</p>
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="ni">&amp;lt;</span>!DOCTYPE html<span class="ni">&amp;gt;</span>
+<span class="ni">&amp;lt;</span>html<span class="ni">&amp;gt;</span>
+<span class="ni">&amp;lt;</span>head<span class="ni">&amp;gt;</span>
+    <span class="ni">&amp;lt;</span>meta charset=<span class="ni">&amp;quot;</span>UTF-8<span class="ni">&amp;quot;&amp;gt;</span>
+    <span class="ni">&amp;lt;</span>link rel=<span class="ni">&amp;quot;</span>stylesheet<span class="ni">&amp;quot;</span> href=<span class="ni">&amp;quot;</span>mermaid.css<span class="ni">&amp;quot;</span> /<span class="ni">&amp;gt;</span>
+    <span class="ni">&amp;lt;</span>script src=<span class="ni">&amp;quot;</span>bundle.js<span class="ni">&amp;quot;&amp;gt;&amp;lt;</span>/script<span class="ni">&amp;gt;</span>
+<span class="ni">&amp;lt;</span>/head<span class="ni">&amp;gt;</span>
+<span class="ni">&amp;lt;</span>body<span class="ni">&amp;gt;</span>
+    <span class="ni">&amp;lt;</span>div class=<span class="ni">&amp;quot;</span>mermaid<span class="ni">&amp;quot;&amp;gt;</span>
+        graph LR
+            A--<span class="ni">&amp;gt;</span>B
+            B--<span class="ni">&amp;gt;</span>C
+            C--<span class="ni">&amp;gt;</span>A
+            D--<span class="ni">&amp;gt;</span>C
+    <span class="ni">&amp;lt;</span>/div<span class="ni">&amp;gt;</span>
+<span class="ni">&amp;lt;</span>/body<span class="ni">&amp;gt;</span>
+<span class="ni">&amp;lt;</span>/html<span class="ni">&amp;gt;</span>
+</code></pre></div></div>
+
+<h2 id="api-usage">API usage</h2>
+<p>The main idea with the API is to be able to call a render function with graph defintion as a string. The render function
+will render the graph and call a callback with the resulting svg code. With this approach it is up to the site creator to
+fetch the graph definition from the site, perhaps from a textarea, render it and place the graph somewhere in the site.</p>
+
+<p>To do this, include mermaidAPI on your web website instead of mermaid.js. The example below show an outline of how this
+could be used. The example just logs the resulting svg to the javascript console.</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>&amp;lt;script src=&amp;quot;mermaidAPI.js&amp;quot;&amp;gt;&amp;lt;/script&amp;gt;
+
+&amp;lt;script&amp;gt;
+    mermaidAPI.initialize({
+        startOnLoad:false
+    });
+    $(function(){
+    // Example of using the API
+        var element = document.querySelector("#graphDiv");
+
+        var insertSvg = function(svgCode, bindFunctions){
+            element.innerHTML = svgCode;
+        };
+
+        var graphDefinition = 'graph TB\na--&gt;b';
+        var graph = mermaidAPI.render('graphDiv', graphDefinition, insertSvg);
+    });
+&amp;lt;/script&amp;gt;
+</code></pre></div></div>
+<h2 id="sample-of-api-usage-together-with-browserify">Sample of API usage together with browserify</h2>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ = require('jquery');
+mermaidAPI = require('mermaid').mermaidAPI;
+mermaidAPI.initialize({
+        startOnLoad:false
+    });
+
+$(function(){
+    var graphDefinition = 'graph TB\na--&gt;b';
+    var cb = function(html){
+	    console.log(html);
+    }
+    mermaidAPI.render('id1',graphDefinition,cb);
+});
+</code></pre></div></div>
+
+<h3 id="binding-events">Binding events</h3>
+
+<p>Sometimes the generated graph also has defined interactions like tooltip and click events. When using the API one must 
+add those events after the graph has been inserted into the DOM.</p>
+
+<p>The example code below is an extract of wheat mermaid does when using the API. The example show how it is possible to 
+bind events to a svg when using the API for rendering.</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>     var insertSvg = function(svgCode, bindFunctions){
+         element.innerHTML = svgCode;
+         if(typeof callback !== 'undefined'){
+             callback(id);
+         }
+         bindFunctions(element);
+     };
+
+     var id = 'theGraph';
+
+
+     mermaidAPI.render(id,txt,insertSvg, element);
+</code></pre></div></div>
+
+<ol>
+  <li>The graph is generated using the render call.</li>
+  <li>After generation the render function calls the provided callback function, in this case its called insertSvg.</li>
+  <li>The callback function is called with two parameters, the svg code of the generated graph and a function. This 
+function binds events to the svg <strong>after</strong> it is inserted into the DOM.</li>
+  <li>Insert the svg code into the DOM for presentation</li>
+  <li>Call the binding function that bainds the events</li>
+</ol>
+
+<h2 id="example-of-a-marked-renderer">Example of a marked renderer</h2>
+
+<p>This is the renderer used for transforming the documentation from markdown to html with mermaid diagrams in the html.</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>    var renderer = new marked.Renderer();
+    renderer.code = function (code, language) {
+        if(code.match(/^sequenceDiagram/)||code.match(/^graph/)){
+            return '&amp;lt;div class="mermaid"&gt;'+code+'&amp;lt;/div&gt;';
+        }
+        else{
+            return '&amp;lt;pre&gt;&amp;lt;code&gt;'+code+'&amp;lt;/code&gt;&amp;lt;/pre&gt;';
+        }
+    };
+</code></pre></div></div>
+
+<p>Another example in coffeescript that also includes the mermaid script tag into the generated markup.</p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>marked = require &amp;#39;marked&amp;#39;
+
+module.exports = (options) -&amp;gt;
+  hasMermaid = false
+  renderer = new marked.Renderer()
+  renderer.defaultCode = renderer.code
+  renderer.code = (code, language) -&amp;gt;
+    if language is &amp;#39;mermaid&amp;#39;
+      html = &amp;#39;&amp;#39;
+      if not hasMermaid
+        hasMermaid = true
+        html += &amp;#39;&amp;amp;ltscript src=&amp;quot;&amp;#39;+options.mermaidPath+&amp;#39;&amp;quot;&amp;gt;&amp;lt;/script&amp;gt;&amp;#39;
+      html + &amp;#39;&amp;amp;ltdiv class=&amp;quot;mermaid&amp;quot;&amp;gt;&amp;#39;+code+&amp;#39;&amp;lt;/div&amp;gt;&amp;#39;
+    else
+      @defaultCode(code, language)
+
+  renderer
+</code></pre></div></div>
+
+<h2 id="advanced-usage">Advanced usage</h2>
+
+<p><strong>Error handling</strong></p>
+
+<p>When the parser encounters invalid syntax the <strong>mermaid.parseError</strong> function is called. It is possible to override this
+function in order to handle the error in an application specific way.</p>
+
+<p><strong>Parsing text without rendering</strong></p>
+
+<p>It is also possible to validate the syntax before rendering in order to streamline the user experience. The function
+<strong>mermaid.parse(txt)</strong> takes a text string as an argument and returns true if the text is syntactically correct and
+false if it is not. The parseError function will be called when the parse function returns false.</p>
+
+<p>The code-example below in meta code illustrates how this could work:</p>
+
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+<span class="nx">mermaid</span><span class="p">.</span><span class="nx">parseError</span> <span class="o">=</span> <span class="kd">function</span><span class="p">(</span><span class="nx">err</span><span class="p">,</span><span class="nx">hash</span><span class="p">){</span>
+    <span class="nx">displayErrorInGui</span><span class="p">(</span><span class="nx">err</span><span class="p">);</span>
+<span class="p">};</span>
+
+<span class="kd">var</span> <span class="nx">textFieldUpdated</span> <span class="o">=</span> <span class="kd">function</span><span class="p">(){</span>
+    <span class="kd">var</span> <span class="nx">textStr</span> <span class="o">=</span> <span class="nx">getTextFromFormField</span><span class="p">(</span><span class="dl">'</span><span class="s1">code</span><span class="dl">'</span><span class="p">);</span>
+
+    <span class="k">if</span><span class="p">(</span><span class="nx">mermaid</span><span class="p">.</span><span class="nx">parse</span><span class="p">(</span><span class="nx">textStr</span><span class="p">)){</span>
+        <span class="nx">reRender</span><span class="p">(</span><span class="nx">textStr</span><span class="p">)</span>
+    <span class="p">}</span>
+<span class="p">};</span>
+
+<span class="nx">bindEventHandler</span><span class="p">(</span><span class="dl">'</span><span class="s1">change</span><span class="dl">'</span><span class="p">,</span> <span class="dl">'</span><span class="s1">code</span><span class="dl">'</span><span class="p">,</span> <span class="nx">textFieldUpdated</span><span class="p">);</span>
+</code></pre></div></div>
+
+<h1 id="configuration">Configuration</h1>
+<p>Mermaid takes a number of options which lets you tweak the rendering of the diagrams. Currently there are three ways of
+setting the options in mermaid.</p>
+
+<ol>
+  <li>Instantiation of the configuration using the initialize call</li>
+  <li><em>Using the global mermaid object</em> - deprecated</li>
+  <li><em>using the global mermaid_config object</em> - deprecated</li>
+  <li>Instantiation of the configuration using the <strong>mermaid.init</strong> call</li>
+</ol>
+
+<p>The list above has two ways to many of doing this. Three are deprecated and will eventually be removed. The list of
+configuration objects are described <a href="http://knsv.github.io/mermaid/index.html#configuration28">in the mermaidAPI documentation</a>.</p>
+
+<h2 id="using-the-mermaidapiinitializemermaidinitialize-call">Using the mermaidAPI.initialize/mermaid.initialize call</h2>
+
+<p>The future proof way of setting the configuration is by using the initialization call to mermaid or mermaidAPi depending
+on what kind of integration you use.</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>    &amp;lt;script src=&amp;quot;../dist/mermaid.js&amp;quot;&amp;gt;&amp;lt;/script&amp;gt;
+    &amp;lt;script&amp;gt;
+        var config = {
+            startOnLoad:true,
+            flowchart:{
+                    useMaxWidth:false,
+                    htmlLabels:true
+            }
+        };
+        mermaid.initialize(config);
+    &amp;lt;/script&amp;gt;
+</code></pre></div></div>
+
+<aside class="success">This is the preferred way of configuring mermaid.</aside>
+
+<h2 id="using-the-mermaid-object">Using the mermaid object</h2>
+
+<p>Is it possible to set some configuration via the mermaid object. The two parameters that are supported using this
+approach are:</p>
+
+<ul>
+  <li>mermaid.startOnLoad</li>
+  <li>mermaid.htmlLabels</li>
+</ul>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>mermaid.startOnLoad = true;
+</code></pre></div></div>
+
+<aside class="info">This way of setting the configuration is deprecated instead the preferred way of is to use the initialize method. This functionality is only kept for not breaking existing integrations</aside>
+
+<h2 id="using-the-mermaid_config">Using the mermaid_config</h2>
+
+<p>Is it possible to set some configuration via the mermaid object. The two parameters that are supported using this
+approach are:</p>
+
+<ul>
+  <li>mermaid_config.startOnLoad</li>
+  <li>mermaid_config.htmlLabels</li>
+</ul>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>mermaid_config.startOnLoad = true;
+</code></pre></div></div>
+
+<aside class="info">This way of setting the configuration is deprecated instead the preferred way of is to use the initialize method. This functionality is only kept for not breaking existing integrations</aside>
+
+<h2 id="using-the-mermaidinit-call">Using the mermaid.init call</h2>
+
+<p>Is it possible to set some configuration via the mermaid object. The two parameters that are supported using this
+approach are:</p>
+
+<ul>
+  <li>mermaid_config.startOnLoad</li>
+  <li>mermaid_config.htmlLabels</li>
+</ul>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>mermaid_config.startOnLoad = true;
+</code></pre></div></div>
+
+<aside class="info">This way of setting the configuration is deprecated instead the preferred way of is to use the initialize method. This functionality is only kept for not breaking existing integrations</aside>

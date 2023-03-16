@@ -1,0 +1,21 @@
+<h1 id="upgrading-to-from-version--040">Upgrading to from version -0.4.0</h1>
+
+<p>Some of the interfaces has been upgraded.</p>
+
+<h2 id="initialization">Initialization</h2>
+
+<p>mermaid_config is no longer used. Instead a call to mermaid initialize is done as in the example below:</p>
+
+<h3 id="version-040">version 0.4.0</h3>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>mermaid_config = {
+    startOnLoad:true
+    };
+</code></pre></div></div>
+
+<h3 id="will-look-like-below-in-version-050">will look like below in version 0.5.0</h3>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>mermaid.initialize({
+    startOnLoad:true
+});
+</code></pre></div></div>

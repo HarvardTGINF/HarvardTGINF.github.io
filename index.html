@@ -1,0 +1,2863 @@
+<!DOCTYPE html>
+<html lang="en-us">
+
+  <head>
+  <link href="http://gmpg.org/xfn/11" rel="profile">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+
+  <!-- Enable responsiveness on mobile devices-->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+
+  <title>
+    
+      TGINF
+    
+  </title>
+
+  <!-- CSS -->
+  <link rel="stylesheet" href="/public/css/poole.css">
+  <link rel="stylesheet" href="/public/css/syntax.css">
+  <link rel="stylesheet" href="/public/css/hyde.css">
+  <link rel="stylesheet" href="/public/css/mystyle.css">
+  <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=PT+Sans:400,400italic,700|Abril+Fatface">
+  <link rel="stylesheet" href="/public/css/theorem.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link rel="stylesheet" href="https://www.w3schools.com/lib/w3.css">
+  <link rel="stylesheet" href="/public/css/color.css">
+  <link rel="stylesheet" href="/public/css/colorbox.css">
+
+
+  <!-- JS -->
+  <script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+    TeX: {
+      equationNumbers: {
+        autoNumber: "AMS"
+      }
+    },
+    tex2jax: {
+      inlineMath: [ ['$','$'] ],
+      displayMath: [ ['$$','$$'] ],
+      processEscapes: true,
+    }
+  });
+  </script>
+  <script type="text/javascript" async
+  src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML">
+  </script>
+  <!-- MathJax local
+  <script type="text/javascript" async src="/js/MathJax/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+  -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+  <!--
+  <script type="text/javascript" src="/js/turn/turn.min.js"></script>
+  -->
+
+  <!-- colorbox -->
+  <script src="/js/jquery.colorbox-min.js"></script>
+  <script>
+    $(document).ready(function(){
+			$(".cooking").colorbox({rel:'cooking'});
+  	  $(".coffee").colorbox({rel:'coffee'});
+    });
+  </script>
+
+  <!-- Add mermaid -->
+  <script src="https://cdn.rawgit.com/knsv/mermaid/6.0.0/dist/mermaid.min.js"></script>
+  <script>
+    mermaid.initialize({
+      startOnLoad:true
+    });
+  </script>
+  <link rel="stylesheet" href="/js/mermaid/dist/mermaid.css">
+
+  <!-- Add cytoscape -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/cytoscape/3.17.1/cytoscape.min.js" integrity="sha512-dR5Qb5zIoRodLJCkh0InsAi/uyP1Pd3lMAliXEdv5ol71k2qCwWFS9N18LIGH9MQuAPWu3adPyww5SK2deReog==" crossorigin="anonymous"></script>
+
+
+  <!-- Icons -->
+  <link rel="apple-touch-icon-precomposed" sizes="144x144" href="/public/harvardicon.png">
+  <link rel="shortcut icon" href="/public/harvardicon.png">
+
+  <!-- RSS -->
+  <link rel="alternate" type="application/rss+xml" title="RSS" href="/atom.xml">
+
+  <!-- tooltip -->
+  <style>
+  .tooltip {
+      position: relative;
+      display: inline-block;
+  }
+
+  .tooltip .tooltiptext {
+      visibility: hidden;
+      width: 300px;
+      background-color: black;
+      color: #fff;
+      text-align: center;
+      border-radius: 6px;
+      padding: 5px 0;
+
+      /* Position the tooltip */
+      position: absolute;
+      z-index: 1;
+      top: 20px;
+  }
+
+  .tooltip:hover .tooltiptext {
+      visibility: visible;
+  }
+
+  figcaption {
+    font-style: italic;
+    padding: 3px;
+    text-align: center;
+  }
+  </style>
+
+</head>
+
+
+  <body  class="theme-base-0h">
+
+    <div class="content-nosidebar container">
+      <div style="display:none">
+$
+    \newcommand{\undefined}{}
+    \newcommand{\hfill}{}
+    \newcommand{\qedhere}{\square}
+    \newcommand{\qed}{\square}
+    \newcommand{\ensuremath}[1]{#1}
+    \newcommand{\bit}{\{0,1\}}
+    \newcommand{\Bit}{\{-1,1\}}
+    \newcommand{\Stab}{\mathbf{Stab}}
+    \newcommand{\NS}{\mathbf{NS}}
+    \newcommand{\ba}{\mathbf{a}}
+    \newcommand{\bc}{\mathbf{c}}
+    \newcommand{\bd}{\mathbf{d}}
+    \newcommand{\be}{\mathbf{e}}
+    \newcommand{\bh}{\mathbf{h}}
+    \newcommand{\br}{\mathbf{r}}
+    \newcommand{\bs}{\mathbf{s}}
+    \newcommand{\bx}{\mathbf{x}}
+    \newcommand{\by}{\mathbf{y}}
+    \newcommand{\bz}{\mathbf{z}}
+    \newcommand{\Var}{\mathbf{Var}}
+    \newcommand{\dist}{\text{dist}}
+    \newcommand{\norm}[1]{\\|#1\\|}
+    \newcommand{\etal}
+		\newcommand{\ie} 
+		\newcommand{\eg} 
+		\newcommand{\cf}
+    \newcommand{\rank}{\text{rank}}
+    \newcommand{\tr}{\text{tr}}
+    \newcommand{\mor}{\text{Mor}}
+    \newcommand{\hom}{\text{Hom}}
+    \newcommand{\id}{\text{id}}
+    \newcommand{\obj}{\text{obj}}
+    \newcommand{\pr}{\text{pr}}
+    \newcommand{\ker}{\text{ker}}
+    \newcommand{\coker}{\text{coker}}
+    \newcommand{\im}{\text{im}}
+    \newcommand{\vol}{\text{vol}}
+    \newcommand{\disc}{\text{disc}}
+
+    \newcommand{\bbA}{\mathbb A}
+    \newcommand{\bbB}{\mathbb B}
+    \newcommand{\bbC}{\mathbb C}
+    \newcommand{\bbD}{\mathbb D}
+    \newcommand{\bbE}{\mathbb E}
+    \newcommand{\bbF}{\mathbb F}
+    \newcommand{\bbG}{\mathbb G}
+    \newcommand{\bbH}{\mathbb H}
+    \newcommand{\bbI}{\mathbb I}
+    \newcommand{\bbJ}{\mathbb J}
+    \newcommand{\bbK}{\mathbb K}
+    \newcommand{\bbL}{\mathbb L}
+    \newcommand{\bbM}{\mathbb M}
+    \newcommand{\bbN}{\mathbb N}
+    \newcommand{\bbO}{\mathbb O}
+    \newcommand{\bbP}{\mathbb P}
+    \newcommand{\bbQ}{\mathbb Q}
+    \newcommand{\bbR}{\mathbb R}
+    \newcommand{\bbS}{\mathbb S}
+    \newcommand{\bbT}{\mathbb T}
+    \newcommand{\bbU}{\mathbb U}
+    \newcommand{\bbV}{\mathbb V}
+    \newcommand{\bbW}{\mathbb W}
+    \newcommand{\bbX}{\mathbb X}
+    \newcommand{\bbY}{\mathbb Y}
+    \newcommand{\bbZ}{\mathbb Z}
+
+    \newcommand{\sA}{\mathscr A}
+    \newcommand{\sB}{\mathscr B}
+    \newcommand{\sC}{\mathscr C}
+    \newcommand{\sD}{\mathscr D}
+    \newcommand{\sE}{\mathscr E}
+    \newcommand{\sF}{\mathscr F}
+    \newcommand{\sG}{\mathscr G}
+    \newcommand{\sH}{\mathscr H}
+    \newcommand{\sI}{\mathscr I}
+    \newcommand{\sJ}{\mathscr J}
+    \newcommand{\sK}{\mathscr K}
+    \newcommand{\sL}{\mathscr L}
+    \newcommand{\sM}{\mathscr M}
+    \newcommand{\sN}{\mathscr N}
+    \newcommand{\sO}{\mathscr O}
+    \newcommand{\sP}{\mathscr P}
+    \newcommand{\sQ}{\mathscr Q}
+    \newcommand{\sR}{\mathscr R}
+    \newcommand{\sS}{\mathscr S}
+    \newcommand{\sT}{\mathscr T}
+    \newcommand{\sU}{\mathscr U}
+    \newcommand{\sV}{\mathscr V}
+    \newcommand{\sW}{\mathscr W}
+    \newcommand{\sX}{\mathscr X}
+    \newcommand{\sY}{\mathscr Y}
+    \newcommand{\sZ}{\mathscr Z}
+
+    \newcommand{\sfA}{\mathsf A}
+    \newcommand{\sfB}{\mathsf B}
+    \newcommand{\sfC}{\mathsf C}
+    \newcommand{\sfD}{\mathsf D}
+    \newcommand{\sfE}{\mathsf E}
+    \newcommand{\sfF}{\mathsf F}
+    \newcommand{\sfG}{\mathsf G}
+    \newcommand{\sfH}{\mathsf H}
+    \newcommand{\sfI}{\mathsf I}
+    \newcommand{\sfJ}{\mathsf J}
+    \newcommand{\sfK}{\mathsf K}
+    \newcommand{\sfL}{\mathsf L}
+    \newcommand{\sfM}{\mathsf M}
+    \newcommand{\sfN}{\mathsf N}
+    \newcommand{\sfO}{\mathsf O}
+    \newcommand{\sfP}{\mathsf P}
+    \newcommand{\sfQ}{\mathsf Q}
+    \newcommand{\sfR}{\mathsf R}
+    \newcommand{\sfS}{\mathsf S}
+    \newcommand{\sfT}{\mathsf T}
+    \newcommand{\sfU}{\mathsf U}
+    \newcommand{\sfV}{\mathsf V}
+    \newcommand{\sfW}{\mathsf W}
+    \newcommand{\sfX}{\mathsf X}
+    \newcommand{\sfY}{\mathsf Y}
+    \newcommand{\sfZ}{\mathsf Z}
+
+    \newcommand{\cA}{\mathcal A}
+    \newcommand{\cB}{\mathcal B}
+    \newcommand{\cC}{\mathcal C}
+    \newcommand{\cD}{\mathcal D}
+    \newcommand{\cE}{\mathcal E}
+    \newcommand{\cF}{\mathcal F}
+    \newcommand{\cG}{\mathcal G}
+    \newcommand{\cH}{\mathcal H}
+    \newcommand{\cI}{\mathcal I}
+    \newcommand{\cJ}{\mathcal J}
+    \newcommand{\cK}{\mathcal K}
+    \newcommand{\cL}{\mathcal L}
+    \newcommand{\cM}{\mathcal M}
+    \newcommand{\cN}{\mathcal N}
+    \newcommand{\cO}{\mathcal O}
+    \newcommand{\cP}{\mathcal P}
+    \newcommand{\cQ}{\mathcal Q}
+    \newcommand{\cR}{\mathcal R}
+    \newcommand{\cS}{\mathcal S}
+    \newcommand{\cT}{\mathcal T}
+    \newcommand{\cU}{\mathcal U}
+    \newcommand{\cV}{\mathcal V}
+    \newcommand{\cW}{\mathcal W}
+    \newcommand{\cX}{\mathcal X}
+    \newcommand{\cY}{\mathcal Y}
+    \newcommand{\cZ}{\mathcal Z}
+
+    \newcommand{\bfA}{\mathbf A}
+    \newcommand{\bfB}{\mathbf B}
+    \newcommand{\bfC}{\mathbf C}
+    \newcommand{\bfD}{\mathbf D}
+    \newcommand{\bfE}{\mathbf E}
+    \newcommand{\bfF}{\mathbf F}
+    \newcommand{\bfG}{\mathbf G}
+    \newcommand{\bfH}{\mathbf H}
+    \newcommand{\bfI}{\mathbf I}
+    \newcommand{\bfJ}{\mathbf J}
+    \newcommand{\bfK}{\mathbf K}
+    \newcommand{\bfL}{\mathbf L}
+    \newcommand{\bfM}{\mathbf M}
+    \newcommand{\bfN}{\mathbf N}
+    \newcommand{\bfO}{\mathbf O}
+    \newcommand{\bfP}{\mathbf P}
+    \newcommand{\bfQ}{\mathbf Q}
+    \newcommand{\bfR}{\mathbf R}
+    \newcommand{\bfS}{\mathbf S}
+    \newcommand{\bfT}{\mathbf T}
+    \newcommand{\bfU}{\mathbf U}
+    \newcommand{\bfV}{\mathbf V}
+    \newcommand{\bfW}{\mathbf W}
+    \newcommand{\bfX}{\mathbf X}
+    \newcommand{\bfY}{\mathbf Y}
+    \newcommand{\bfZ}{\mathbf Z}
+
+    \newcommand{\rmA}{\mathrm A}
+    \newcommand{\rmB}{\mathrm B}
+    \newcommand{\rmC}{\mathrm C}
+    \newcommand{\rmD}{\mathrm D}
+    \newcommand{\rmE}{\mathrm E}
+    \newcommand{\rmF}{\mathrm F}
+    \newcommand{\rmG}{\mathrm G}
+    \newcommand{\rmH}{\mathrm H}
+    \newcommand{\rmI}{\mathrm I}
+    \newcommand{\rmJ}{\mathrm J}
+    \newcommand{\rmK}{\mathrm K}
+    \newcommand{\rmL}{\mathrm L}
+    \newcommand{\rmM}{\mathrm M}
+    \newcommand{\rmN}{\mathrm N}
+    \newcommand{\rmO}{\mathrm O}
+    \newcommand{\rmP}{\mathrm P}
+    \newcommand{\rmQ}{\mathrm Q}
+    \newcommand{\rmR}{\mathrm R}
+    \newcommand{\rmS}{\mathrm S}
+    \newcommand{\rmT}{\mathrm T}
+    \newcommand{\rmU}{\mathrm U}
+    \newcommand{\rmV}{\mathrm V}
+    \newcommand{\rmW}{\mathrm W}
+    \newcommand{\rmX}{\mathrm X}
+    \newcommand{\rmY}{\mathrm Y}
+    \newcommand{\rmZ}{\mathrm Z}
+
+
+    \newcommand{\bb}{\mathbf{b}}
+    \newcommand{\bv}{\mathbf{v}}
+    \newcommand{\bw}{\mathbf{w}}
+    \newcommand{\bx}{\mathbf{x}}
+    \newcommand{\by}{\mathbf{y}}
+    \newcommand{\bz}{\mathbf{z}}
+
+    \newcommand{\paren}[1]{( #1 )}
+    \newcommand{\Paren}[1]{\left( #1 \right)}
+    \newcommand{\bigparen}[1]{\bigl( #1 \bigr)}
+    \newcommand{\Bigparen}[1]{\Bigl( #1 \Bigr)}
+    \newcommand{\biggparen}[1]{\biggl( #1 \biggr)}
+    \newcommand{\Biggparen}[1]{\Biggl( #1 \Biggr)}
+    \newcommand{\abs}[1]{\lvert #1 \rvert}
+    \newcommand{\Abs}[1]{\left\lvert #1 \right\rvert}
+    \newcommand{\bigabs}[1]{\bigl\lvert #1 \bigr\rvert}
+    \newcommand{\Bigabs}[1]{\Bigl\lvert #1 \Bigr\rvert}
+    \newcommand{\biggabs}[1]{\biggl\lvert #1 \biggr\rvert}
+    \newcommand{\Biggabs}[1]{\Biggl\lvert #1 \Biggr\rvert}
+    \newcommand{\card}[1]{\left| #1 \right|}
+    \newcommand{\Card}[1]{\left\lvert #1 \right\rvert}
+    \newcommand{\bigcard}[1]{\bigl\lvert #1 \bigr\rvert}
+    \newcommand{\Bigcard}[1]{\Bigl\lvert #1 \Bigr\rvert}
+    \newcommand{\biggcard}[1]{\biggl\lvert #1 \biggr\rvert}
+    \newcommand{\Biggcard}[1]{\Biggl\lvert #1 \Biggr\rvert}
+    \newcommand{\norm}[1]{\lVert #1 \rVert}
+    \newcommand{\Norm}[1]{\left\lVert #1 \right\rVert}
+    \newcommand{\bignorm}[1]{\bigl\lVert #1 \bigr\rVert}
+    \newcommand{\Bignorm}[1]{\Bigl\lVert #1 \Bigr\rVert}
+    \newcommand{\biggnorm}[1]{\biggl\lVert #1 \biggr\rVert}
+    \newcommand{\Biggnorm}[1]{\Biggl\lVert #1 \Biggr\rVert}
+    \newcommand{\iprod}[1]{\langle #1 \rangle}
+    \newcommand{\Iprod}[1]{\left\langle #1 \right\rangle}
+    \newcommand{\bigiprod}[1]{\bigl\langle #1 \bigr\rangle}
+    \newcommand{\Bigiprod}[1]{\Bigl\langle #1 \Bigr\rangle}
+    \newcommand{\biggiprod}[1]{\biggl\langle #1 \biggr\rangle}
+    \newcommand{\Biggiprod}[1]{\Biggl\langle #1 \Biggr\rangle}
+    \newcommand{\set}[1]{\lbrace #1 \rbrace}
+    \newcommand{\Set}[1]{\left\lbrace #1 \right\rbrace}
+    \newcommand{\bigset}[1]{\bigl\lbrace #1 \bigr\rbrace}
+    \newcommand{\Bigset}[1]{\Bigl\lbrace #1 \Bigr\rbrace}
+    \newcommand{\biggset}[1]{\biggl\lbrace #1 \biggr\rbrace}
+    \newcommand{\Biggset}[1]{\Biggl\lbrace #1 \Biggr\rbrace}
+    \newcommand{\bracket}[1]{\lbrack #1 \rbrack}
+    \newcommand{\Bracket}[1]{\left\lbrack #1 \right\rbrack}
+    \newcommand{\bigbracket}[1]{\bigl\lbrack #1 \bigr\rbrack}
+    \newcommand{\Bigbracket}[1]{\Bigl\lbrack #1 \Bigr\rbrack}
+    \newcommand{\biggbracket}[1]{\biggl\lbrack #1 \biggr\rbrack}
+    \newcommand{\Biggbracket}[1]{\Biggl\lbrack #1 \Biggr\rbrack}
+    \newcommand{\ucorner}[1]{\ulcorner #1 \urcorner}
+    \newcommand{\Ucorner}[1]{\left\ulcorner #1 \right\urcorner}
+    \newcommand{\bigucorner}[1]{\bigl\ulcorner #1 \bigr\urcorner}
+    \newcommand{\Bigucorner}[1]{\Bigl\ulcorner #1 \Bigr\urcorner}
+    \newcommand{\biggucorner}[1]{\biggl\ulcorner #1 \biggr\urcorner}
+    \newcommand{\Biggucorner}[1]{\Biggl\ulcorner #1 \Biggr\urcorner}
+    \newcommand{\ceil}[1]{\lceil #1 \rceil}
+    \newcommand{\Ceil}[1]{\left\lceil #1 \right\rceil}
+    \newcommand{\bigceil}[1]{\bigl\lceil #1 \bigr\rceil}
+    \newcommand{\Bigceil}[1]{\Bigl\lceil #1 \Bigr\rceil}
+    \newcommand{\biggceil}[1]{\biggl\lceil #1 \biggr\rceil}
+    \newcommand{\Biggceil}[1]{\Biggl\lceil #1 \Biggr\rceil}
+    \newcommand{\floor}[1]{\lfloor #1 \rfloor}
+    \newcommand{\Floor}[1]{\left\lfloor #1 \right\rfloor}
+    \newcommand{\bigfloor}[1]{\bigl\lfloor #1 \bigr\rfloor}
+    \newcommand{\Bigfloor}[1]{\Bigl\lfloor #1 \Bigr\rfloor}
+    \newcommand{\biggfloor}[1]{\biggl\lfloor #1 \biggr\rfloor}
+    \newcommand{\Biggfloor}[1]{\Biggl\lfloor #1 \Biggr\rfloor}
+    \newcommand{\lcorner}[1]{\llcorner #1 \lrcorner}
+    \newcommand{\Lcorner}[1]{\left\llcorner #1 \right\lrcorner}
+    \newcommand{\biglcorner}[1]{\bigl\llcorner #1 \bigr\lrcorner}
+    \newcommand{\Biglcorner}[1]{\Bigl\llcorner #1 \Bigr\lrcorner}
+    \newcommand{\bigglcorner}[1]{\biggl\llcorner #1 \biggr\lrcorner}
+    \newcommand{\Bigglcorner}[1]{\Biggl\llcorner #1 \Biggr\lrcorner}
+
+    \newcommand{\ket}[1]{| #1 \rangle}
+    \newcommand{\bra}[1]{\langle #1 |}
+    \newcommand{\braket}[2]{\langle #1 | #2 \rangle}
+    \newcommand{\ketbra}[1]{| #1 \rangle\langle #1 |}
+
+    \newcommand{\e}{\varepsilon}
+    \newcommand{\eps}{\varepsilon}
+    \newcommand{\from}{\colon}
+    \newcommand{\super}[2]{#1^{(#2)}}
+    \newcommand{\varsuper}[2]{#1^{\scriptscriptstyle (#2)}}
+    \newcommand{\tensor}{\otimes}
+
+    \newcommand{\eset}{\emptyset}
+    \newcommand{\sse}{\subseteq}
+    \newcommand{\sst}{\substack}
+    \newcommand{\ot}{\otimes}
+
+    \newcommand{\Esst}[1]{\bbE_{\substack{#1}}}
+
+    \newcommand{\vbig}{\vphantom{\bigoplus}}
+
+    \newcommand{\seteq}{\mathrel{\mathop:}=}
+    \newcommand{\defeq}{\stackrel{\mathrm{def}}=}
+
+    \newcommand{\Mid}{\mathrel{}\middle|\mathrel{}}
+
+    \newcommand{\Ind}{\mathbf 1}
+
+    \newcommand{\bits}{\{0,1\}}
+    \newcommand{\sbits}{\{\pm 1\}}
+    \newcommand{\R}{\mathbb R}
+    \newcommand{\Rnn}{\R_{\ge 0}}
+    \newcommand{\N}{\mathbb N}
+    \newcommand{\Z}{\mathbb Z}
+    \newcommand{\Q}{\mathbb Q}
+    \newcommand{\C}{\mathbb C}
+    \newcommand{\A}{\mathbb A}
+    \newcommand{\Real}{\mathbb R}
+
+    \newcommand{\mper}{\,.}
+    \newcommand{\mcom}{\,,}
+
+
+    \DeclareMathOperator{\Id}{Id}
+    \DeclareMathOperator{\cone}{cone}
+    \DeclareMathOperator{\vol}{vol}
+    \DeclareMathOperator{\val}{val}
+    \DeclareMathOperator{\opt}{opt}
+    \DeclareMathOperator{\Opt}{Opt}
+    \DeclareMathOperator{\Val}{Val}
+    \DeclareMathOperator{\LP}{LP}
+    \DeclareMathOperator{\SDP}{SDP}
+    \DeclareMathOperator{\Tr}{Tr}
+    \DeclareMathOperator{\Inf}{Inf}
+    \DeclareMathOperator{\size}{size}
+    \DeclareMathOperator{\poly}{poly}
+    \DeclareMathOperator{\polylog}{polylog}
+    \DeclareMathOperator{\min}{min}
+    \DeclareMathOperator{\max}{max}
+    \DeclareMathOperator{\argmax}{arg\,max}
+    \DeclareMathOperator{\argmin}{arg\,min}
+    \DeclareMathOperator{\qpoly}{qpoly}
+    \DeclareMathOperator{\qqpoly}{qqpoly}
+    \DeclareMathOperator{\conv}{conv}
+    \DeclareMathOperator{\Conv}{Conv}
+    \DeclareMathOperator{\supp}{supp}
+    \DeclareMathOperator{\sign}{sign}
+    \DeclareMathOperator{\perm}{perm}
+    \DeclareMathOperator{\mspan}{span}
+    \DeclareMathOperator{\mrank}{rank}
+    \DeclareMathOperator{\E}{\mathbb E}
+    \DeclareMathOperator{\pE}{\tilde{\mathbb E}}
+    \DeclareMathOperator{\Pr}{\mathbb P}
+    \DeclareMathOperator{\Span}{Span}
+    \DeclareMathOperator{\Cone}{Cone}
+    \DeclareMathOperator{\junta}{junta}
+    \DeclareMathOperator{\NSS}{NSS}
+    \DeclareMathOperator{\SA}{SA}
+    \DeclareMathOperator{\SOS}{SOS}
+    \DeclareMathOperator{\Stab}{\mathbf Stab}
+    \DeclareMathOperator{\Det}{\textbf{Det}}
+    \DeclareMathOperator{\Perm}{\textbf{Perm}}
+    \DeclareMathOperator{\Sym}{\textbf{Sym}}
+    \DeclareMathOperator{\Pow}{\textbf{Pow}}
+    \DeclareMathOperator{\Gal}{\textbf{Gal}}
+    \DeclareMathOperator{\Aut}{\textbf{Aut}}
+
+    \newcommand{\iprod}[1]{\langle #1 \rangle}
+    \newcommand{\cE}{\mathcal{E}}
+    \newcommand{\E}{\mathbb{E}}
+    \newcommand{\pE}{\tilde{\mathbb{E}}}
+    \newcommand{\N}{\mathbb{N}}
+    \renewcommand{\P}{\mathcal{P}}
+    \notag
+$
+</div>
+<div style="display:none">
+$
+  \newcommand{\sleq}{\ensuremath{\preceq}}
+  \newcommand{\sgeq}{\ensuremath{\succeq}}
+  \newcommand{\diag}{\ensuremath{\mathrm{diag}}}
+  \newcommand{\support}{\ensuremath{\mathrm{support}}}
+  \newcommand{\zo}{\ensuremath{\{0,1\}}}
+  \newcommand{\pmo}{\ensuremath{\{\pm 1\}}}
+  \newcommand{\uppersos}{\ensuremath{\overline{\mathrm{sos}}}}
+  \newcommand{\lambdamax}{\ensuremath{\lambda_{\mathrm{max}}}}
+  \newcommand{\rank}{\ensuremath{\mathrm{rank}}}
+  \newcommand{\Mslow}{\ensuremath{M_{\mathrm{slow}}}}
+  \newcommand{\Mfast}{\ensuremath{M_{\mathrm{fast}}}}
+  \newcommand{\Mdiag}{\ensuremath{M_{\mathrm{diag}}}}
+  \newcommand{\Mcross}{\ensuremath{M_{\mathrm{cross}}}}
+  \newcommand{\eqdef}{\ensuremath{ =^{def}}}
+  \newcommand{\threshold}{\ensuremath{\mathrm{threshold}}}
+  \newcommand{\vbls}{\ensuremath{\mathrm{vbls}}}
+  \newcommand{\cons}{\ensuremath{\mathrm{cons}}}
+  \newcommand{\edges}{\ensuremath{\mathrm{edges}}}
+  \newcommand{\cl}{\ensuremath{\mathrm{cl}}}
+  \newcommand{\xor}{\ensuremath{\oplus}}
+  \newcommand{\1}{\ensuremath{\mathrm{1}}}
+  \notag
+$
+</div>
+<div style="display:none">
+$
+  \newcommand{\transpose}[1]{\ensuremath{#1{}^{\mkern-2mu\intercal}}}
+  \newcommand{\dyad}[1]{\ensuremath{#1#1{}^{\mkern-2mu\intercal}}}
+  \newcommand{\nchoose}[1]{\ensuremath}
+  \newcommand{\generated}[1]{\ensuremath{\langle #1 \rangle}}
+  \notag
+$
+</div>
+<div style="display:none">
+$
+  \newcommand{\eqdef}{\mathbin{\stackrel{\rm def}{=}}}
+  \newcommand{\R} % real numbers
+  \newcommand{\N}} % natural numbers
+  \newcommand{\Z} % integers
+  \newcommand{\F} % a field
+  \newcommand{\Q} % the rationals
+  \newcommand{\C}{\mathbb{C}} % the complexes
+  \newcommand{\poly}}
+  \newcommand{\polylog}}
+  \newcommand{\loglog}}}
+  \newcommand{\zo}{\{0,1\}}
+  \newcommand{\suchthat}
+  \newcommand{\pr}[1]{\Pr\left[#1\right]}
+  \newcommand{\deffont}{\em}
+  \newcommand{\getsr}{\mathbin{\stackrel{\mbox{\tiny R}}{\gets}}}
+  \newcommand{\Exp}{\mathop{\mathrm E}\displaylimits} % expectation
+  \newcommand{\Var}{\mathop{\mathrm Var}\displaylimits} % variance
+  \newcommand{\xor}{\oplus}
+  \newcommand{\GF}{\mathrm{GF}}
+  \newcommand{\eps}{\varepsilon}
+  \notag
+$
+</div>
+<div style="display:none">
+$
+  \newcommand{\class}[1]{\mathbf{#1}}
+  \newcommand{\coclass}[1]{\mathbf{co\mbox{-}#1}} % and their complements
+  \newcommand{\BPP}{\class{BPP}}
+  \newcommand{\NP}{\class{NP}}
+  \newcommand{\RP}{\class{RP}}
+  \newcommand{\coRP}{\coclass{RP}}
+  \newcommand{\ZPP}{\class{ZPP}}
+  \newcommand{\BQP}{\class{BQP}}
+  \newcommand{\FP}{\class{FP}}
+  \newcommand{\QP}{\class{QuasiP}}
+  \newcommand{\VF}{\class{VF}}
+  \newcommand{\VBP}{\class{VBP}}
+  \newcommand{\VP}{\class{VP}}
+  \newcommand{\VNP}{\class{VNP}}
+  \newcommand{\RNC}{\class{RNC}}
+  \newcommand{\RL}{\class{RL}}
+  \newcommand{\BPL}{\class{BPL}}
+  \newcommand{\coRL}{\coclass{RL}}
+  \newcommand{\IP}{\class{IP}}
+  \newcommand{\AM}{\class{AM}}
+  \newcommand{\MA}{\class{MA}}
+  \newcommand{\QMA}{\class{QMA}}
+  \newcommand{\SBP}{\class{SBP}}
+  \newcommand{\coAM}{\class{coAM}}
+  \newcommand{\coMA}{\class{coMA}}
+  \renewcommand{\P}{\class{P}}
+  \newcommand\prBPP{\class{prBPP}}
+  \newcommand\prRP{\class{prRP}}
+  \newcommand\prP{\class{prP}}
+  \newcommand{\Ppoly}{\class{P/poly}}
+  \newcommand{\NPpoly}{\class{NP/poly}}
+  \newcommand{\coNPpoly}{\class{coNP/poly}}
+  \newcommand{\DTIME}{\class{DTIME}}
+  \newcommand{\TIME}{\class{TIME}}
+  \newcommand{\SIZE}{\class{SIZE}}
+  \newcommand{\SPACE}{\class{SPACE}}
+  \newcommand{\ETIME}{\class{E}}
+  \newcommand{\BPTIME}{\class{BPTIME}}
+  \newcommand{\RPTIME}{\class{RPTIME}}
+  \newcommand{\ZPTIME}{\class{ZPTIME}}
+  \newcommand{\EXP}{\class{EXP}}
+  \newcommand{\ZPEXP}{\class{ZPEXP}}
+  \newcommand{\RPEXP}{\class{RPEXP}}
+  \newcommand{\BPEXP}{\class{BPEXP}}
+  \newcommand{\SUBEXP}{\class{SUBEXP}}
+  \newcommand{\NTIME}{\class{NTIME}}
+  \newcommand{\NL}{\class{NL}}
+  \renewcommand{\L}{\class{L}}
+  \newcommand{\NQP}{\class{NQP}}
+  \newcommand{\NEXP}{\class{NEXP}}
+  \newcommand{\coNEXP}{\coclass{NEXP}}
+  \newcommand{\NPSPACE}{\class{NPSPACE}}
+  \newcommand{\PSPACE}{\class{PSPACE}}
+  \newcommand{\NSPACE}{\class{NSPACE}}
+  \newcommand{\coNSPACE}{\coclass{NSPACE}}
+  \newcommand{\coL}{\coclass{L}}
+  \newcommand{\coP}{\coclass{P}}
+  \newcommand{\coNP}{\coclass{NP}}
+  \newcommand{\coNL}{\coclass{NL}}
+  \newcommand{\coNPSPACE}{\coclass{NPSPACE}}
+  \newcommand{\APSPACE}{\class{APSPACE}}
+  \newcommand{\LINSPACE}{\class{LINSPACE}}
+  \newcommand{\qP}{\class{\tilde{P}}}
+  \newcommand{\PH}{\class{PH}}
+  \newcommand{\EXPSPACE}{\class{EXPSPACE}}
+  \newcommand{\SigmaTIME}[1]{\class{\Sigma_{#1}TIME}}
+  \newcommand{\PiTIME}[1]{\class{\Pi_{#1}TIME}}
+  \newcommand{\SigmaP}[1]{\class{\Sigma_{#1}P}}
+  \newcommand{\PiP}[1]{\class{\Pi_{#1}P}}
+  \newcommand{\DeltaP}[1]{\class{\Delta_{#1}P}}
+  \newcommand{\ATIME}{\class{ATIME}}
+  \newcommand{\ASPACE}{\class{ASPACE}}
+  \newcommand{\AP}{\class{AP}}
+  \newcommand{\AL}{\class{AL}}
+  \newcommand{\APSPACE}{\class{APSPACE}}
+  \newcommand{\VNC}[1]{\class{VNC^{#1}}}
+  \newcommand{\NC}[1]{\class{NC^{#1}}}
+  \newcommand{\AC}[1]{\class{AC^{#1}}}
+  \newcommand{\ACC}[1]{\class{ACC^{#1}}}
+  \newcommand{\TC}[1]{\class{TC^{#1}}}
+  \newcommand{\ShP}{\class{\# P}}
+  \newcommand{\PaP}{\class{\oplus P}}
+  \newcommand{\PCP}{\class{PCP}}
+  \newcommand{\kMIP}[1]{\class{#1\mbox{-}MIP}}
+  \newcommand{\MIP}{\class{MIP}}
+$
+</div>
+<div style="display:none">
+$
+  \newcommand{\textprob}[1]{\text{#1}}
+  \newcommand{\mathprob}[1]{\textbf{#1}}
+  \newcommand{\Satisfiability}{\textprob{Satisfiability}}
+  \newcommand{\SAT}{\textprob{SAT}}
+  \newcommand{\TSAT}{\textprob{3SAT}}
+  \newcommand{\USAT}{\textprob{USAT}}
+  \newcommand{\UNSAT}{\textprob{UNSAT}}
+  \newcommand{\QPSAT}{\textprob{QPSAT}}
+  \newcommand{\TQBF}{\textprob{TQBF}}
+  \newcommand{\LinProg}{\textprob{Linear Programming}}
+  \newcommand{\LP}{\mathprob{LP}}
+  \newcommand{\Factor}{\textprob{Factoring}}
+  \newcommand{\CircVal}{\textprob{Circuit Value}}
+  \newcommand{\CVAL}{\mathprob{CVAL}}
+  \newcommand{\CircSat}{\textprob{Circuit Satisfiability}}
+  \newcommand{\CSAT}{\textprob{CSAT}}
+  \newcommand{\CycleCovers}{\textprob{Cycle Covers}}
+  \newcommand{\MonCircVal}{\textprob{Monotone Circuit Value}}
+  \newcommand{\Reachability}{\textprob{Reachability}}
+  \newcommand{\Unreachability}{\textprob{Unreachability}}
+  \newcommand{\RCH}{\mathprob{RCH}}
+  \newcommand{\BddHalt}{\textprob{Bounded Halting}}
+  \newcommand{\BH}{\mathprob{BH}}
+  \newcommand{\DiscreteLog}{\textprob{Discrete Log}}
+  \newcommand{\REE}{\mathprob{REE}}
+  \newcommand{\QBF}{\mathprob{QBF}}
+  \newcommand{\MCSP}{\mathprob{MCSP}}
+  \newcommand{\GGEO}{\mathprob{GGEO}}
+  \newcommand{\CKTMIN}{\mathprob{CKT-MIN}}
+  \newcommand{\MINCKT}{\mathprob{MIN-CKT}}
+  \newcommand{\IdentityTest}{\textprob{Identity Testing}}
+  \newcommand{\Majority}{\textprob{Majority}}
+  \newcommand{\CountIndSets}{\textprob{\#Independent Sets}}
+  \newcommand{\Parity}{\textprob{Parity}}
+  \newcommand{\Clique}{\textprob{Clique}}
+  \newcommand{\CountCycles}{\textprob{#Cycles}}
+  \newcommand{\CountPerfMatchings}{\textprob{\#Perfect Matchings}}
+  \newcommand{\CountMatchings}{\textprob{\#Matchings}}
+  \newcommand{\CountMatch}{\mathprob{\#Matchings}}
+  \newcommand{\ECSAT}{\mathprob{E#SAT}}
+  \newcommand{\ShSAT}{\mathprob{#SAT}}
+  \newcommand{\ShTSAT}{\mathprob{#3SAT}}
+  \newcommand{\HamCycle}{\textprob{Hamiltonian Cycle}}
+  \newcommand{\Permanent}{\textprob{Permanent}}
+  \newcommand{\ModPermanent}{\textprob{Modular Permanent}}
+  \newcommand{\GraphNoniso}{\textprob{Graph Nonisomorphism}}
+  \newcommand{\GI}{\mathprob{GI}}
+  \newcommand{\GNI}{\mathprob{GNI}}
+  \newcommand{\GraphIso}{\textprob{Graph Isomorphism}}
+  \newcommand{\QuantBoolForm}{\textprob{Quantified Boolean
+      Formulae}}
+  \newcommand{\GenGeography}{\textprob{Generalized Geography}}
+  \newcommand{\MAXTSAT}{\mathprob{Max3SAT}}
+  \newcommand{\GapMaxTSAT}{\mathprob{GapMax3SAT}}
+  \newcommand{\ELIN}{\mathprob{E3LIN2}}
+  \newcommand{\CSP}{\mathprob{CSP}}
+  \newcommand{\Lin}{\mathprob{Lin}}
+
+  \newcommand{\ONE}{\mathbf{ONE}}
+  \newcommand{\ZERO}{\mathbf{ZERO}}
+
+  \newcommand{\yes}
+  \newcommand{\no}
+$
+</div>
+
+
+      <div class="page">
+  <h1 class="page-title">TGINF</h1>
+  <emph>Theory Graduate student and INdian Food (TGINF)</emph> is a student seminar at Harvard with a focus on the theoretical aspect of computer science. As the name suggested, there will only be theory grad students/post docs and indian food in TGINF. Well... recently there are some other types of food but nothing beyond.
+
+The seminar currently takes place on every Monday at 4:30pm-6pm ET with free food provided. Please add <a href="https://calendar.google.com/calendar/u/0?cid=c2VwZm1uZm5kNzZ1cW9rMjRzZml1ajd0ZHNAZ3JvdXAuY2FsZW5kYXIuZ29vZ2xlLmNvbQ">this</a> to your calendar or <a class="tooltip">email the organizer<span class="tooltiptext">
+
+<script language="JavaScript">
+function myEmailAccount() {
+  document.write("cmarcussen");
+}
+function myAT() {
+  document.write(".");
+}
+function myDOT() {
+  document.write("@");
+}
+function myAT() {
+  document.write(".");
+}
+myEmailAccount();
+myDOT();
+document.write("g");
+myAT();
+document.write("harvard");
+myAT();
+document.write("edu");
+</script>
+</span></a> if you want to join in the mailing list!
+
+
+
+
+<h1>Photos</h1>
+
+<div class="w3-content w3-display-container">
+  <img class="mySlides" src="/images/TGINF/TGINF_1.JPG" style="width:100%">
+  <img class="mySlides" src="/images/TGINF/TGINF_2.JPG" style="width:100%">
+  <img class="mySlides" src="/images/TGINF/TGINF_3.JPG" style="width:100%">
+  <img class="mySlides" src="/images/TGINF/TGINF_4.JPG" style="width:100%">
+  <img class="mySlides" src="/images/TGINF/TGINF_5.JPG" style="width:100%">
+  <img class="mySlides" src="/images/TGINF/TGINF_6.JPG" style="width:100%">
+  <img class="mySlides" src="/images/TGINF/TGINF_7.JPG" style="width:100%">
+  <img class="mySlides" src="/images/TGINF/TGINF_8.JPG" style="width:100%">
+
+
+  <button class="w3-button w3-black w3-display-left" onclick="plusDivs(-1)">&#10094;</button>
+  <button class="w3-button w3-black w3-display-right" onclick="plusDivs(1)">&#10095;</button>
+</div>
+
+<script>
+var slideIndex = 1;
+showDivs(slideIndex);
+
+function plusDivs(n) {
+  showDivs(slideIndex += n);
+}
+
+function showDivs(n) {
+  var i;
+  var x = document.getElementsByClassName("mySlides");
+  if (n > x.length) {slideIndex = 1}
+  if (n < 1) {slideIndex = x.length}
+  for (i = 0; i < x.length; i++) {
+    x[i].style.display = "none";
+  }
+  x[slideIndex-1].style.display = "block";
+}
+</script>
+
+
+<h1>Future talks</h1>
+
+<table class="w3-table w3-bordered">
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+    <tr>
+      <th>20 Mar 2023</th>
+      <th>Ted on <a href="/TGINF/2023_3_20_Ted.html">Making Sense of Directed Graphs</a></th>
+    </tr>
+    
+  
+</table>
+
+
+<h1>Google calendar</h1>
+
+<iframe src="https://calendar.google.com/calendar/embed?src=sepfmnfnd76uqok24sfiuj7tds%40group.calendar.google.com&ctz=America%2FNew_York" style="border: 0" width="800" height="600" frameborder="0" scrolling="no"></iframe>
+
+
+<h1>Previous talks</h1>
+
+
+
+
+
+  
+    <h2>2023</h2>
+    <table class="w3-table w3-bordered">
+    
+      
+        
+        
+      
+        
+        
+        <tr>
+          <th>06 Mar 2023</th>
+          <th>Zach on <a href="/TGINF/2023_3_6_Zach.html">Techniques for private resource allocation</a></th>
+        </tr>
+        
+      
+        
+        
+        <tr>
+          <th>27 Feb 2023</th>
+          <th>Yihui on <a href="/TGINF/2023_2_27_Yihui.html">The true hardness of quantum error mitigation</a></th>
+        </tr>
+        
+      
+        
+        
+        <tr>
+          <th>21 Feb 2023</th>
+          <th>Yeongwoo on <a href="/TGINF/2023_2_21_Yeongwoo.html">Max Cut and Hardness of Approximation</a></th>
+        </tr>
+        
+      
+        
+        
+        <tr>
+          <th>13 Feb 2023</th>
+          <th>Prayaag on <a href="/TGINF/2023_2_13_Prayaag.html">Pseudorandom Graphs for Logical Adversaries</a></th>
+        </tr>
+        
+      
+        
+        
+        <tr>
+          <th>02 Feb 2023</th>
+          <th>Jamie on <a href="/TGINF/2023_2_2_Jamie.html">Pseudorandom Graphs for Logical Adversaries</a></th>
+        </tr>
+        
+      
+        
+        
+        <tr>
+          <th>26 Jan 2023</th>
+          <th>Initial Meeting on <a href="/TGINF/2023_1_26_InitialMeeting-copy.html">Initial Meeting</a></th>
+        </tr>
+        
+      
+    </table>
+  
+
+  
+    <h2>2022</h2>
+    <a onclick="myCollapse('TGINF-2022')"><i class="fa fa-chevron-circle-down fa-lg" aria-hidden="true" id="NAME-but"></i></a><br>
+    <div id="TGINF-2022" class="w3-container w3-hide">
+      <table class="w3-table w3-bordered">
+      
+        
+          
+          
+          <tr>
+            <th>15 Dec 2022</th>
+            <th>Trivia night on <a href="/TGINF/2022_12_15_Trivia.html">TCS trivia</a></th>
+          </tr>
+          
+        
+          
+          
+          <tr>
+            <th>08 Dec 2022</th>
+            <th>Aaron Berger on <a href="/TGINF/2022_12_8_Aaron.html">What's so great about triangle removal?</a></th>
+          </tr>
+          
+        
+          
+          
+          <tr>
+            <th>01 Dec 2022</th>
+            <th>David on <a href="/TGINF/2022_12_1_David.html">Derandomization using Random Strings</a></th>
+          </tr>
+          
+        
+          
+          
+          <tr>
+            <th>29 Nov 2022</th>
+            <th>Miryam Mi-Ying Huang on <a href="/TGINF/2022_11_29_Miryam.html">Public verifiability in the quantum setting</a></th>
+          </tr>
+          
+        
+          
+          
+          <tr>
+            <th>21 Nov 2022</th>
+            <th>Open Problem Session on <a href="/TGINF/2022_11_21_OpenProblems.html">Proposed Questions</a></th>
+          </tr>
+          
+        
+          
+          
+          <tr>
+            <th>17 Nov 2022</th>
+            <th>Noah Singer on <a href="/TGINF/2022_11_17_Noah.html">A tale of two streaming CSPs</a></th>
+          </tr>
+          
+        
+          
+          
+          <tr>
+            <th>10 Nov 2022</th>
+            <th>Jake on <a href="/TGINF/2022_11_10_Jake.html">Multicolor Ramsey Numbers for Double Stars</a></th>
+          </tr>
+          
+        
+          
+          
+          <tr>
+            <th>03 Nov 2022</th>
+            <th>Cassandra on <a href="/TGINF/2022_11_3_Cassandra.html">Testing properties of distributions</a></th>
+          </tr>
+          
+        
+          
+          
+          <tr>
+            <th>27 Oct 2022</th>
+            <th>Prashanth on <a href="/TGINF/2022_10_27_Prashanth.html">Recent progress on the VP vs VNP problem</a></th>
+          </tr>
+          
+        
+          
+          
+          <tr>
+            <th>13 Oct 2022</th>
+            <th>Jamie on <a href="/TGINF/2022_10_13_Jamie.html">Descriptive Complexity</a></th>
+          </tr>
+          
+        
+          
+          
+          <tr>
+            <th>06 Oct 2022</th>
+            <th>Open Problem Session on <a href="/TGINF/2022_10_06_OpenProblems.html">Proposed Questions</a></th>
+          </tr>
+          
+        
+          
+          
+          <tr>
+            <th>29 Sep 2022</th>
+            <th>Kai on <a href="/TGINF/2022_09_29_Kai.html">Regret bound in restless (state-dependent) multi-armed bandits</a></th>
+          </tr>
+          
+        
+          
+          
+          <tr>
+            <th>22 Sep 2022</th>
+            <th>Chin Ho on <a href="/TGINF/2022_09_22_Chin.html">The total influence of k-CNFs</a></th>
+          </tr>
+          
+        
+          
+          
+          <tr>
+            <th>15 Sep 2022</th>
+            <th>Juspreet on <a href="/TGINF/2022_09_15_Juspreet.html">Random Max-CSPs inherit Algorithmic Hardness from Mixed Spin Glasses</a></th>
+          </tr>
+          
+        
+          
+          
+          <tr>
+            <th>08 Sep 2022</th>
+            <th>Chi-Ning on <a href="/TGINF/2022_09_08_Chi-Ning.html">Are Matrices the Same as Vectors? Spencer's Theorem and Matrix Spencer Conjecture</a></th>
+          </tr>
+          
+        
+          
+          
+          <tr>
+            <th>29 Apr 2022</th>
+            <th>Ted on <a href="/TGINF/2022_04_29_Ted.html">Pseudorandom self-reductions for NP-complete problems</a></th>
+          </tr>
+          
+        
+          
+          
+          <tr>
+            <th>26 Apr 2022</th>
+            <th>Santhoshini on <a href="/TGINF/2022_04_26_Santhoshini.html">Proof of Kahn-Kalai expectation threshold conjecture</a></th>
+          </tr>
+          
+        
+          
+          
+          <tr>
+            <th>22 Apr 2022</th>
+            <th>Prayaag on <a href="/TGINF/2022_04_22_Prayaag.html">Ellipsoid fitting conjecture</a></th>
+          </tr>
+          
+        
+          
+          
+          <tr>
+            <th>15 Apr 2022</th>
+            <th>Max Hopkins on <a href="/TGINF/2022_04_15_Max.html">Set Cover in Random Order (or - what makes the SC adversary strong?)</a></th>
+          </tr>
+          
+        
+          
+          
+          <tr>
+            <th>08 Apr 2022</th>
+            <th>Greg on <a href="/TGINF/2022_04_08_Greg.html">Set Cover in Random Order (or - what makes the SC adversary strong?)</a></th>
+          </tr>
+          
+        
+          
+          
+          <tr>
+            <th>25 Mar 2022</th>
+            <th>Jamie on <a href="/TGINF/2022_03_25_Jamie.html">Topological Proof of the Insolvability of the Quintic</a></th>
+          </tr>
+          
+        
+          
+          
+          <tr>
+            <th>18 Mar 2022</th>
+            <th>Chi-Ning on <a href="/TGINF/2022_03_18_Chi-Ning.html">Two proofs for Goldreich-Levin theorem</a></th>
+          </tr>
+          
+        
+          
+          
+          <tr>
+            <th>11 Mar 2022</th>
+            <th>Juspreet on <a href="/TGINF/2022_03_11_Juspreet.html">Showing that limits of combinatorial statistics of random graphs exist</a></th>
+          </tr>
+          
+        
+          
+          
+          <tr>
+            <th>18 Feb 2022</th>
+            <th>Chi-Ning on <a href="/TGINF/2022_02_18_Chi-Ning.html">A "Quantum" Proof for Sensitivity Conjecture</a></th>
+          </tr>
+          
+        
+          
+          
+          <tr>
+            <th>11 Feb 2022</th>
+            <th>Sumegha on <a href="/TGINF/2022_02_11_Sumegha.html">Sumegha's Practice Job Talk</a></th>
+          </tr>
+          
+        
+          
+          
+          <tr>
+            <th>09 Feb 2022</th>
+            <th>Anurag on <a href="/TGINF/2022_02_09_Anurag.html">Favorite book proof - Polynomial approximations</a></th>
+          </tr>
+          
+        
+      </table>
+    </div>
+  
+
+  
+    <h2>2021</h2>
+    <a onclick="myCollapse('TGINF-2021')"><i class="fa fa-chevron-circle-down fa-lg" aria-hidden="true" id="NAME-but"></i></a><br>
+    <div id="TGINF-2021" class="w3-container w3-hide">
+      <table class="w3-table w3-bordered">
+      
+        
+          
+          
+          <tr>
+            <th>03 Dec 2021</th>
+            <th>Daniel on <a href="/TGINF/2021_12_03_Daniel.html">Efficiently Convolving Distributions</a></th>
+          </tr>
+          
+        
+          
+          
+          <tr>
+            <th>26 Nov 2021</th>
+            <th>Chin Ho on <a href="/TGINF/2021_11_26_Chin-Ho.html">On Fooling Read-Once CNFs Optimally</a></th>
+          </tr>
+          
+        
+          
+          
+          <tr>
+            <th>19 Nov 2021</th>
+            <th>Chi-Ning on <a href="/TGINF/2021_11_19_Chi-Ning.html">The Unreasonable Ineffectiveness of Mathematics in Biology - My Frustration in Studying Neuroscience</a></th>
+          </tr>
+          
+        
+          
+          
+          <tr>
+            <th>12 Nov 2021</th>
+            <th>Jamie on <a href="/TGINF/2021_11_12_Jamie.html">How do you sample a random graph partition?</a></th>
+          </tr>
+          
+        
+          
+          
+          <tr>
+            <th>05 Nov 2021</th>
+            <th>Ted on <a href="/TGINF/2021_11_05_Ted.html">Hitting sets are as good as random coins, but I can't prove that</a></th>
+          </tr>
+          
+        
+          
+          
+          <tr>
+            <th>29 Oct 2021</th>
+            <th>Kevin on <a href="/TGINF/2021_10_29_Kevin.html">Circuit lower bounds for linear functions is hard</a></th>
+          </tr>
+          
+        
+          
+          
+          <tr>
+            <th>22 Oct 2021</th>
+            <th>Chi-Ning on <a href="/TGINF/2021_10_22_Chi-Ning.html">Circuit lower bounds - In the end, we know so little...</a></th>
+          </tr>
+          
+        
+          
+          
+          <tr>
+            <th>15 Oct 2021</th>
+            <th>Juspreet on <a href="/TGINF/2021_10_15_Juspreet.html">Most CSPs should have OGPs - A tale of failures</a></th>
+          </tr>
+          
+        
+          
+          
+          <tr>
+            <th>07 Sep 2021</th>
+            <th>Chi-Ning on <a href="/TGINF/2021_09_07_Chi-Ning.html">When Neuroscience Meets TCS</a></th>
+          </tr>
+          
+        
+          
+          
+          <tr>
+            <th>30 Aug 2021</th>
+            <th>Juspreet on <a href="/TGINF/2021_08_30_Juspreet.html">Overlap Gap Property, Spin Glasses & Obstructions to local Quantum Algorithms</a></th>
+          </tr>
+          
+        
+          
+          
+          <tr>
+            <th>23 Aug 2021</th>
+            <th>Ted on <a href="/TGINF/2021_08_23_Ted.html">Hitting Sets For Regular Branching Programs</a></th>
+          </tr>
+          
+        
+          
+          
+          <tr>
+            <th>16 Aug 2021</th>
+            <th>Chi-Ning on <a href="/TGINF/2021_08_16_Chi-Ning.html">Quantum supremacy and its complexity-theoretic foundation</a></th>
+          </tr>
+          
+        
+          
+          
+          <tr>
+            <th>06 May 2021</th>
+            <th>Shao-Heng on <a href="/TGINF/2021_05_06_Shao-Heng.html">How to be an optimal middleman - power of Information Intermediaries in Budgeted Mechanisms</a></th>
+          </tr>
+          
+        
+          
+          
+          <tr>
+            <th>29 Apr 2021</th>
+            <th>Juspreet on <a href="/TGINF/2021_04_29_Juspreet.html">Random Graphs, Long-Cycles & Local-Algorithms</a></th>
+          </tr>
+          
+        
+          
+          
+          <tr>
+            <th>22 Apr 2021</th>
+            <th>Noah on <a href="/TGINF/2021_04_22_Noah.html">Every ordering CSP is approximation resistant in the streaming setting</a></th>
+          </tr>
+          
+        
+          
+          
+          <tr>
+            <th>15 Apr 2021</th>
+            <th>Ted on <a href="/TGINF/2021_04_15_Ted.html">Pseudodistributions That Beat All PRGs</a></th>
+          </tr>
+          
+        
+          
+          
+          <tr>
+            <th>01 Apr 2021</th>
+            <th>Kai on <a href="/TGINF/2021_04_01_Kai.html">Application and Theory of Differentiable Optimization in Machine Learning</a></th>
+          </tr>
+          
+        
+          
+          
+          <tr>
+            <th>25 Mar 2021</th>
+            <th>Sumegha on <a href="/TGINF/2021_03_25_Sumegha.html">Coin Problem and Read-Once Branching Programs</a></th>
+          </tr>
+          
+        
+          
+          
+          <tr>
+            <th>04 Mar 2021</th>
+            <th>Chi-Ning on <a href="/TGINF/2021_03_04_Chi-Ning.html">A General Framework for Analyzing Stochastic Dynamics in Learning Algorithms</a></th>
+          </tr>
+          
+        
+          
+          
+          <tr>
+            <th>25 Feb 2021</th>
+            <th>Tim Chu on <a href="/TGINF/2021_02_25_Tim.html">Manhattan distances, Kernels, and Metric Transforms.</a></th>
+          </tr>
+          
+        
+          
+          
+          <tr>
+            <th>18 Feb 2021</th>
+            <th>Josh on <a href="/TGINF/2021_02_18_Josh.html">Small Low-Depth Circuits for the Walsh-Hadamard Transform</a></th>
+          </tr>
+          
+        
+      </table>
+    </div>
+  
+
+  
+    <h2>2020</h2>
+    <a onclick="myCollapse('TGINF-2020')"><i class="fa fa-chevron-circle-down fa-lg" aria-hidden="true" id="NAME-but"></i></a><br>
+    <div id="TGINF-2020" class="w3-container w3-hide">
+      <table class="w3-table w3-bordered">
+      
+        
+          
+          
+          <tr>
+            <th>07 Dec 2020</th>
+            <th>Prayaag on <a href="/TGINF/2020_12_07_Prayaag.html">Efficient Algorithms for Heavy-Tailed Mean Estimation</a></th>
+          </tr>
+          
+        
+          
+          
+          <tr>
+            <th>23 Nov 2020</th>
+            <th>Sandhu on <a href="/TGINF/2020_11_23_Sandhu.html">TBD</a></th>
+          </tr>
+          
+        
+          
+          
+          <tr>
+            <th>12 Nov 2020</th>
+            <th>Jenny on <a href="/TGINF/2020_11_12_Jenny.html">Fine-grained complexity of graph distance problems</a></th>
+          </tr>
+          
+        
+          
+          
+          <tr>
+            <th>02 Nov 2020</th>
+            <th>Runzhou on <a href="/TGINF/2020_11_02_Runzhou.html">Edge-Weighted Online Bipartite Matching</a></th>
+          </tr>
+          
+        
+          
+          
+          <tr>
+            <th>29 Oct 2020</th>
+            <th>Ben on <a href="/TGINF/2020_10_29_Ben.html">The Magic of Ultraproducts</a></th>
+          </tr>
+          
+        
+          
+          
+          <tr>
+            <th>22 Oct 2020</th>
+            <th>Chi-Ning on <a href="/TGINF/2020_10_22_Chi-Ning.html">When neuroscience meets TCS</a></th>
+          </tr>
+          
+        
+          
+          
+          <tr>
+            <th>15 Oct 2020</th>
+            <th>Mitali on <a href="/TGINF/2020_10_15_Mitali.html">Playing Unique Games on Certified Small-Set Expanders</a></th>
+          </tr>
+          
+        
+          
+          
+          <tr>
+            <th>05 Oct 2020</th>
+            <th>Josh on <a href="/TGINF/2020_10_05_Josh.html">Probabilistic Polynomials for Majority</a></th>
+          </tr>
+          
+        
+          
+          
+          <tr>
+            <th>01 Oct 2020</th>
+            <th>Santhoshini on <a href="/TGINF/2020_10_01_Santhoshini.html">Improved Explicit Data Structures in the Bit-Probe Model Using Error-Correcting Codes</a></th>
+          </tr>
+          
+        
+          
+          
+          <tr>
+            <th>11 May 2020</th>
+            <th>Sasha on <a href="/TGINF/2020_05_11_Sasha.html">Polynomial Data Structure Lower Bounds in the Group Model</a></th>
+          </tr>
+          
+        
+          
+          
+          <tr>
+            <th>04 May 2020</th>
+            <th>Juspreet on <a href="/TGINF/2020_05_04_Juspreet.html">TBD</a></th>
+          </tr>
+          
+        
+          
+          
+          <tr>
+            <th>27 Apr 2020</th>
+            <th>Ben on <a href="/TGINF/2020_04_27_Ben.html">Learning from Strategic Agents</a></th>
+          </tr>
+          
+        
+          
+          
+          <tr>
+            <th>20 Apr 2020</th>
+            <th>Josh on <a href="/TGINF/2020_04_20_Josh.html">Quickly Finding Orthogonal Vectors and Hamming Nearest Neighbors</a></th>
+          </tr>
+          
+        
+          
+          
+          <tr>
+            <th>13 Apr 2020</th>
+            <th>Chi-Ning on <a href="/TGINF/2020_04_13_Chi-Ning.html">Random quantum circuits and quantum supremacy</a></th>
+          </tr>
+          
+        
+          
+          
+          <tr>
+            <th>06 Apr 2020</th>
+            <th>Santhoshini on <a href="/TGINF/2020_04_06_Santhoshini.html">Simple, credible and approximately-optimal multi-dimensional auctions</a></th>
+          </tr>
+          
+        
+          
+          
+          <tr>
+            <th>30 Mar 2020</th>
+            <th>Shweta Jain on <a href="/TGINF/2020_03_30_Shweta.html">Counting cliques in real-world graphs</a></th>
+          </tr>
+          
+        
+          
+          
+          <tr>
+            <th>16 Mar 2020</th>
+            <th>Juspreet on <a href="/TGINF/2020_03_16_Juspreet.html">Entropy Flattening</a></th>
+          </tr>
+          
+        
+          
+          
+          <tr>
+            <th>09 Mar 2020</th>
+            <th>Yuval Dagan on <a href="/TGINF/2020_03_09_Yuval.html">Interaction is necessary for distributed learning with privacy or communication constraints</a></th>
+          </tr>
+          
+        
+          
+          
+          <tr>
+            <th>02 Mar 2020</th>
+            <th>Josh on <a href="/TGINF/2020_03_02_Josh.html">Faster Update Time for Turnstile Streaming Algorithms</a></th>
+          </tr>
+          
+        
+          
+          
+          <tr>
+            <th>24 Feb 2020</th>
+            <th>Beatrice on <a href="/TGINF/2020_02_24_Beatrice.html">Optimization of Quantum Optimization Algorithms</a></th>
+          </tr>
+          
+        
+          
+          
+          <tr>
+            <th>10 Feb 2020</th>
+            <th>Jason Li on <a href="/TGINF/2020_02_10_Jason.html">The Karger-Stein Algorithm is Optimal for k-cut</a></th>
+          </tr>
+          
+        
+          
+          
+          <tr>
+            <th>03 Feb 2020</th>
+            <th>Santhoshini and Chi-Ning on <a href="/TGINF/2020_02_03_Santhoshini+Chi-Ning.html">Settling the Approximation Ratio of Boolean Max-2CSP in the Streaming Model</a></th>
+          </tr>
+          
+        
+          
+          
+          <tr>
+            <th>27 Jan 2020</th>
+            <th>Chi-Ning on <a href="/TGINF/2020_01_27_Chi-Ning.html">An One-Shot Framework for Analyzing Stochastic Dynamics Streaming Model</a></th>
+          </tr>
+          
+        
+      </table>
+    </div>
+  
+
+  
+    <h2>2019</h2>
+    <a onclick="myCollapse('TGINF-2019')"><i class="fa fa-chevron-circle-down fa-lg" aria-hidden="true" id="NAME-but"></i></a><br>
+    <div id="TGINF-2019" class="w3-container w3-hide">
+      <table class="w3-table w3-bordered">
+      
+        
+          
+          
+          <tr>
+            <th>02 Dec 2019</th>
+            <th>Christina on <a href="/TGINF/2019_12_02_Christina.html">Implementing the exponential mechanism with base-2 DP</a></th>
+          </tr>
+          
+        
+          
+          
+          <tr>
+            <th>25 Nov 2019</th>
+            <th>Dylan McKay on <a href="/TGINF/2019_11_25_Dylan.html">Some Relationship(s) Between Circuit Complexity and Classical Complexity Questions</a></th>
+          </tr>
+          
+        
+          
+          
+          <tr>
+            <th>18 Nov 2019</th>
+            <th>Meena on <a href="/TGINF/2019_11_18_Meena.html">Understanding Sparse JL for Feature Hashing</a></th>
+          </tr>
+          
+        
+          
+          
+          <tr>
+            <th>11 Nov 2019</th>
+            <th>Ben on <a href="/TGINF/2019_11_11_Ben.html">Fancy reductions between counting problems</a></th>
+          </tr>
+          
+        
+          
+          
+          <tr>
+            <th>05 Nov 2019</th>
+            <th>Santhoshini on <a href="/TGINF/2019_11_04_Santhoshini.html">Quantified 2-SAT is in P</a></th>
+          </tr>
+          
+        
+          
+          
+          <tr>
+            <th>28 Oct 2019</th>
+            <th>Santhoshini on <a href="/TGINF/2019_10_28_Santhoshini.html">High-dimensional Expanders</a></th>
+          </tr>
+          
+        
+          
+          
+          <tr>
+            <th>21 Oct 2019</th>
+            <th>Noah Stephens-Davidowitz on <a href="/TGINF/2019_10_21_Noah.html">Seth-hardness of coding problems</a></th>
+          </tr>
+          
+        
+          
+          
+          <tr>
+            <th>07 Oct 2019</th>
+            <th>Chi-Ning on <a href="/TGINF/2019_10_07_Chi-Ning.html">Border Complexity of Sum-Power-Sum Circuits</a></th>
+          </tr>
+          
+        
+          
+          
+          <tr>
+            <th>30 Sep 2019</th>
+            <th>Josh on <a href="/TGINF/2019_09_30_Josh.html">Limits on All Known (and Some Unknown) Approaches to Matrix Multiplication</a></th>
+          </tr>
+          
+        
+          
+          
+          <tr>
+            <th>23 Sep 2019</th>
+            <th>Juspreet on <a href="/TGINF/2019_09_23_Juspreet.html">FEI conjecture - Motivations, Applications & Special Cases</a></th>
+          </tr>
+          
+        
+          
+          
+          <tr>
+            <th>16 Sep 2019</th>
+            <th>Jiapeng on <a href="/TGINF/2019_09_16_Jiapeng.html">An Improved Sunflower Lemma</a></th>
+          </tr>
+          
+        
+          
+          
+          <tr>
+            <th>09 Sep 2019</th>
+            <th>Chi-Ning on <a href="/TGINF/2019_09_09_open.html">Open session</a></th>
+          </tr>
+          
+        
+          
+          
+          <tr>
+            <th>19 Aug 2019</th>
+            <th>Brabeeba Wang on <a href="/TGINF/2019_08_19_Brabeeba.html">Convergence Analysis for Biological Oja's Rule in Solving Streaming PCA</a></th>
+          </tr>
+          
+        
+          
+          
+          <tr>
+            <th>12 Aug 2019</th>
+            <th>Juspreet on <a href="/TGINF/2019_08_12_Juspreet.html">Brascamp-Lieb, Subadditivity of Entropy and a Log-Sobolev inequality</a></th>
+          </tr>
+          
+        
+          
+          
+          <tr>
+            <th>05 Aug 2019</th>
+            <th>Thibaut on <a href="/TGINF/2019_08_05_Thibaut.html">3SUM with Preprocessing - Algorithms, Lower Bounds, and Cryptographic Applications</a></th>
+          </tr>
+          
+        
+          
+          
+          <tr>
+            <th>29 Jul 2019</th>
+            <th>Santhoshini on <a href="/TGINF/2019_07_29_Santhoshini.html">Approximate Log Rank Conjecture</a></th>
+          </tr>
+          
+        
+          
+          
+          <tr>
+            <th>22 Jul 2019</th>
+            <th>Ashish Dwivedi on <a href="/TGINF/2019_07_22_Ashish.html">Roots of univariate polynomials modulo prime powers</a></th>
+          </tr>
+          
+        
+          
+          
+          <tr>
+            <th>15 Jul 2019</th>
+            <th>Juspreet on <a href="/TGINF/2019_07_15_Juspreet.html">Entropic inequalities</a></th>
+          </tr>
+          
+        
+          
+          
+          <tr>
+            <th>08 Jul 2019</th>
+            <th>Jarek on <a href="/TGINF/2019_07_08_Jarek.html">Sensitivity Conjecture</a></th>
+          </tr>
+          
+        
+          
+          
+          <tr>
+            <th>01 Jul 2019</th>
+            <th>Chi-Ning on <a href="/TGINF/2019_07_01_Chi-Ning.html">Quantum Circuit Complexity</a></th>
+          </tr>
+          
+        
+          
+          
+          <tr>
+            <th>24 Jun 2019</th>
+            <th>Jarek on <a href="/TGINF/2019_06_24_Jarek.html">Measurements and Shor's algorithm</a></th>
+          </tr>
+          
+        
+          
+          
+          <tr>
+            <th>06 May 2019</th>
+            <th>Andrea on <a href="/TGINF/2019_05_06_Andrea.html">Faster Random k-CNF Satisfiability</a></th>
+          </tr>
+          
+        
+          
+          
+          <tr>
+            <th>29 Apr 2019</th>
+            <th>Alex on <a href="/TGINF/2019_04_29_Alex.html">Optimal Las Vegas Approximate Near Neighbors in lp</a></th>
+          </tr>
+          
+        
+          
+          
+          <tr>
+            <th>22 Apr 2019</th>
+            <th>Christina on <a href="/TGINF/2019_04_22_Christina.html">Composition in Differential Privacy</a></th>
+          </tr>
+          
+        
+          
+          
+          <tr>
+            <th>15 Apr 2019</th>
+            <th>Thibaut on <a href="/TGINF/2019_04_15_Thibaut.html">Understanding and manipulating the hardness of one-way functions via computational analogues of entropies</a></th>
+          </tr>
+          
+        
+          
+          
+          <tr>
+            <th>08 Apr 2019</th>
+            <th>Thibaut on <a href="/TGINF/2019_04_08_Thibaut.html">Understanding and manipulating the hardness of one-way functions via computational analogues of entropies</a></th>
+          </tr>
+          
+        
+          
+          
+          <tr>
+            <th>01 Apr 2019</th>
+            <th>Ben on <a href="/TGINF/2019_04_01_Ben.html">Random Conjectures</a></th>
+          </tr>
+          
+        
+          
+          
+          <tr>
+            <th>25 Mar 2019</th>
+            <th>Fred on <a href="/TGINF/2019_03_25_Fred.html">Mirror Descent, Online Learning, and Competitive Analysis</a></th>
+          </tr>
+          
+        
+          
+          
+          <tr>
+            <th>11 Mar 2019</th>
+            <th>Tselil on <a href="/TGINF/2019_03_11_Tselil.html">Sherali-Adams Strikes Back</a></th>
+          </tr>
+          
+        
+          
+          
+          <tr>
+            <th>04 Mar 2019</th>
+            <th>Juspreet and Emil on <a href="/TGINF/2019_03_04_Juspreet+Emil.html">Hardness of RCS by Design</a></th>
+          </tr>
+          
+        
+          
+          
+          <tr>
+            <th>25 Feb 2019</th>
+            <th>Lijie on <a href="/TGINF/2019_02_25_Lijie.html">Non-deterministic Quasi-Polynomial Time is Average-case Hard for ACC Circuits</a></th>
+          </tr>
+          
+        
+          
+          
+          <tr>
+            <th>11 Feb 2019</th>
+            <th>Chi-Ning on <a href="/TGINF/2019_02_11_Chi-Ning.html">The Algorithmic Power of Spiking Neural Networks</a></th>
+          </tr>
+          
+        
+          
+          
+          <tr>
+            <th>04 Feb 2019</th>
+            <th>Jarek on <a href="/TGINF/2019_02_04_Jarek.html">Introduction to compressed sensing</a></th>
+          </tr>
+          
+        
+          
+          
+          <tr>
+            <th>28 Jan 2019</th>
+            <th>Xinyu on <a href="/TGINF/2019_01_28_Xinyu.html">BQP vs PH oracle separation with stochastic calculus</a></th>
+          </tr>
+          
+        
+      </table>
+    </div>
+  
+
+  
+    <h2>2018</h2>
+    <a onclick="myCollapse('TGINF-2018')"><i class="fa fa-chevron-circle-down fa-lg" aria-hidden="true" id="NAME-but"></i></a><br>
+    <div id="TGINF-2018" class="w3-container w3-hide">
+      <table class="w3-table w3-bordered">
+      
+        
+          
+          
+          <tr>
+            <th>05 Nov 2018</th>
+            <th>Chi-Ning on <a href="/TGINF/2018_11_05_Chi-Ning.html">Graph Complexity</a></th>
+          </tr>
+          
+        
+          
+          
+          <tr>
+            <th>29 Oct 2018</th>
+            <th>Ben on <a href="/TGINF/2018_10_29_Ben.html">Cap Sets and Rigid Matrices</a></th>
+          </tr>
+          
+        
+          
+          
+          <tr>
+            <th>22 Oct 2018</th>
+            <th>Sasha on <a href="/TGINF/2018_10_22_Sasha.html">The Minrank of Random Graph</a></th>
+          </tr>
+          
+        
+          
+          
+          <tr>
+            <th>15 Oct 2018</th>
+            <th>Prayaag on <a href="/TGINF/2018_10_15_Prayaag.html">Mean estimation in high dimensions</a></th>
+          </tr>
+          
+        
+          
+          
+          <tr>
+            <th>01 Oct 2018</th>
+            <th>Preetum on <a href="/TGINF/2018_10_01_Preetum.html">On Science</a></th>
+          </tr>
+          
+        
+          
+          
+          <tr>
+            <th>20 Sep 2018</th>
+            <th>Fred on <a href="/TGINF/2018_09_20_Fred.html">Revisit minimum spanning tree</a></th>
+          </tr>
+          
+        
+          
+          
+          <tr>
+            <th>09 Jul 2018</th>
+            <th>Chi-Ning on <a href="/TGINF/2018_07_09_Chi-Ning.html">ACC lower bounds for NQP</a></th>
+          </tr>
+          
+        
+          
+          
+          <tr>
+            <th>14 May 2018</th>
+            <th>Yi-Hsiu on <a href="/TGINF/2018_05_14_Yi-Hsiu.html">Flattening Entropies</a></th>
+          </tr>
+          
+        
+          
+          
+          <tr>
+            <th>30 Apr 2018</th>
+            <th>Andrea on <a href="/TGINF/2018_04_30_Andrea.html">Tight Hardness for Shortest Cycles and Paths in Sparse Graphs</a></th>
+          </tr>
+          
+        
+          
+          
+          <tr>
+            <th>23 Apr 2018</th>
+            <th>Chi-Ning on <a href="/TGINF/2018_04_23_Chi-Ning.html">Learning algorithm from natural proofs</a></th>
+          </tr>
+          
+        
+          
+          
+          <tr>
+            <th>16 Apr 2018</th>
+            <th>Kyle on <a href="/TGINF/2018_04_16_Kyle.html">Grothendieck's inequality</a></th>
+          </tr>
+          
+        
+          
+          
+          <tr>
+            <th>09 Apr 2018</th>
+            <th>Preetum on <a href="/TGINF/2018_04_09_Preetum.html">Prediction with Short Memory</a></th>
+          </tr>
+          
+        
+          
+          
+          <tr>
+            <th>02 Apr 2018</th>
+            <th>Zhixian on <a href="/TGINF/2018_04_02_Zhixian.html">Noisy graph isomorphism</a></th>
+          </tr>
+          
+        
+          
+          
+          <tr>
+            <th>26 Mar 2018</th>
+            <th>Thibaut on <a href="/TGINF/2018_03_26_Thibaut.html">Black box separations in cryptography and random oracles</a></th>
+          </tr>
+          
+        
+          
+          
+          <tr>
+            <th>19 Mar 2018</th>
+            <th>Nic on <a href="/TGINF/2018_03_19_Nic.html">Dense Model Theorem</a></th>
+          </tr>
+          
+        
+          
+          
+          <tr>
+            <th>05 Mar 2018</th>
+            <th>Jarek on <a href="/TGINF/2018_03_05_Jarek.html">Monumental Graph Minor Theory</a></th>
+          </tr>
+          
+        
+          
+          
+          <tr>
+            <th>26 Feb 2018</th>
+            <th>Mrinal on <a href="/TGINF/2018_02_26_Mrinal.html">Multivariate Polynomial Factorization - 101</a></th>
+          </tr>
+          
+        
+          
+          
+          <tr>
+            <th>12 Feb 2018</th>
+            <th>Chi-Ning on <a href="/TGINF/2018_02_12_Chi-Ning.html">Subgraph conditioning method</a></th>
+          </tr>
+          
+        
+      </table>
+    </div>
+  
+
+
+
+<h1>Contributed Speakers</h1>
+
+<!-- Get the speaker name on the site and set them
+to the `site_speakers` variable. -->
+
+
+
+
+
+
+<!-- List of all speakers-->
+<ul class="tags">
+  
+    <li>
+      <a href="/speakers/#Aaron Berger" class="tag">Aaron Berger
+        
+        
+        <span>(1)</span>
+      </a>
+    </li>
+  
+    <li>
+      <a href="/speakers/#Alex" class="tag">Alex
+        
+        
+        <span>(1)</span>
+      </a>
+    </li>
+  
+    <li>
+      <a href="/speakers/#Andrea" class="tag">Andrea
+        
+        
+        <span>(2)</span>
+      </a>
+    </li>
+  
+    <li>
+      <a href="/speakers/#Anurag" class="tag">Anurag
+        
+        
+        <span>(1)</span>
+      </a>
+    </li>
+  
+    <li>
+      <a href="/speakers/#Ashish Dwivedi" class="tag">Ashish Dwivedi
+        
+        
+        <span>(1)</span>
+      </a>
+    </li>
+  
+    <li>
+      <a href="/speakers/#Beatrice" class="tag">Beatrice
+        
+        
+        <span>(1)</span>
+      </a>
+    </li>
+  
+    <li>
+      <a href="/speakers/#Ben" class="tag">Ben
+        
+        
+        <span>(5)</span>
+      </a>
+    </li>
+  
+    <li>
+      <a href="/speakers/#Brabeeba Wang" class="tag">Brabeeba Wang
+        
+        
+        <span>(1)</span>
+      </a>
+    </li>
+  
+    <li>
+      <a href="/speakers/#Cassandra" class="tag">Cassandra
+        
+        
+        <span>(1)</span>
+      </a>
+    </li>
+  
+    <li>
+      <a href="/speakers/#Chi-Ning" class="tag">Chi-Ning
+        
+        
+        <span>(19)</span>
+      </a>
+    </li>
+  
+    <li>
+      <a href="/speakers/#Chin Ho" class="tag">Chin Ho
+        
+        
+        <span>(2)</span>
+      </a>
+    </li>
+  
+    <li>
+      <a href="/speakers/#Christina" class="tag">Christina
+        
+        
+        <span>(2)</span>
+      </a>
+    </li>
+  
+    <li>
+      <a href="/speakers/#Daniel" class="tag">Daniel
+        
+        
+        <span>(1)</span>
+      </a>
+    </li>
+  
+    <li>
+      <a href="/speakers/#David" class="tag">David
+        
+        
+        <span>(1)</span>
+      </a>
+    </li>
+  
+    <li>
+      <a href="/speakers/#Dylan McKay" class="tag">Dylan McKay
+        
+        
+        <span>(1)</span>
+      </a>
+    </li>
+  
+    <li>
+      <a href="/speakers/#Fred" class="tag">Fred
+        
+        
+        <span>(2)</span>
+      </a>
+    </li>
+  
+    <li>
+      <a href="/speakers/#Greg" class="tag">Greg
+        
+        
+        <span>(1)</span>
+      </a>
+    </li>
+  
+    <li>
+      <a href="/speakers/#Initial Meeting" class="tag">Initial Meeting
+        
+        
+        <span>(1)</span>
+      </a>
+    </li>
+  
+    <li>
+      <a href="/speakers/#Jake" class="tag">Jake
+        
+        
+        <span>(1)</span>
+      </a>
+    </li>
+  
+    <li>
+      <a href="/speakers/#Jamie" class="tag">Jamie
+        
+        
+        <span>(4)</span>
+      </a>
+    </li>
+  
+    <li>
+      <a href="/speakers/#Jarek" class="tag">Jarek
+        
+        
+        <span>(4)</span>
+      </a>
+    </li>
+  
+    <li>
+      <a href="/speakers/#Jason Li" class="tag">Jason Li
+        
+        
+        <span>(1)</span>
+      </a>
+    </li>
+  
+    <li>
+      <a href="/speakers/#Jenny" class="tag">Jenny
+        
+        
+        <span>(1)</span>
+      </a>
+    </li>
+  
+    <li>
+      <a href="/speakers/#Jiapeng" class="tag">Jiapeng
+        
+        
+        <span>(1)</span>
+      </a>
+    </li>
+  
+    <li>
+      <a href="/speakers/#Josh" class="tag">Josh
+        
+        
+        <span>(5)</span>
+      </a>
+    </li>
+  
+    <li>
+      <a href="/speakers/#Juspreet" class="tag">Juspreet
+        
+        
+        <span>(10)</span>
+      </a>
+    </li>
+  
+    <li>
+      <a href="/speakers/#Juspreet and Emil" class="tag">Juspreet and Emil
+        
+        
+        <span>(1)</span>
+      </a>
+    </li>
+  
+    <li>
+      <a href="/speakers/#Kai" class="tag">Kai
+        
+        
+        <span>(2)</span>
+      </a>
+    </li>
+  
+    <li>
+      <a href="/speakers/#Kevin" class="tag">Kevin
+        
+        
+        <span>(1)</span>
+      </a>
+    </li>
+  
+    <li>
+      <a href="/speakers/#Kyle" class="tag">Kyle
+        
+        
+        <span>(1)</span>
+      </a>
+    </li>
+  
+    <li>
+      <a href="/speakers/#Lijie" class="tag">Lijie
+        
+        
+        <span>(1)</span>
+      </a>
+    </li>
+  
+    <li>
+      <a href="/speakers/#Max Hopkins" class="tag">Max Hopkins
+        
+        
+        <span>(1)</span>
+      </a>
+    </li>
+  
+    <li>
+      <a href="/speakers/#Meena" class="tag">Meena
+        
+        
+        <span>(1)</span>
+      </a>
+    </li>
+  
+    <li>
+      <a href="/speakers/#Miryam Mi-Ying Huang" class="tag">Miryam Mi-Ying Huang
+        
+        
+        <span>(1)</span>
+      </a>
+    </li>
+  
+    <li>
+      <a href="/speakers/#Mitali" class="tag">Mitali
+        
+        
+        <span>(1)</span>
+      </a>
+    </li>
+  
+    <li>
+      <a href="/speakers/#Mrinal" class="tag">Mrinal
+        
+        
+        <span>(1)</span>
+      </a>
+    </li>
+  
+    <li>
+      <a href="/speakers/#Nic" class="tag">Nic
+        
+        
+        <span>(1)</span>
+      </a>
+    </li>
+  
+    <li>
+      <a href="/speakers/#Noah" class="tag">Noah
+        
+        
+        <span>(1)</span>
+      </a>
+    </li>
+  
+    <li>
+      <a href="/speakers/#Noah Singer" class="tag">Noah Singer
+        
+        
+        <span>(1)</span>
+      </a>
+    </li>
+  
+    <li>
+      <a href="/speakers/#Noah Stephens-Davidowitz" class="tag">Noah Stephens-Davidowitz
+        
+        
+        <span>(1)</span>
+      </a>
+    </li>
+  
+    <li>
+      <a href="/speakers/#Open Problem Session" class="tag">Open Problem Session
+        
+        
+        <span>(2)</span>
+      </a>
+    </li>
+  
+    <li>
+      <a href="/speakers/#Prashanth" class="tag">Prashanth
+        
+        
+        <span>(1)</span>
+      </a>
+    </li>
+  
+    <li>
+      <a href="/speakers/#Prayaag" class="tag">Prayaag
+        
+        
+        <span>(4)</span>
+      </a>
+    </li>
+  
+    <li>
+      <a href="/speakers/#Preetum" class="tag">Preetum
+        
+        
+        <span>(2)</span>
+      </a>
+    </li>
+  
+    <li>
+      <a href="/speakers/#Runzhou" class="tag">Runzhou
+        
+        
+        <span>(1)</span>
+      </a>
+    </li>
+  
+    <li>
+      <a href="/speakers/#Sandhu" class="tag">Sandhu
+        
+        
+        <span>(1)</span>
+      </a>
+    </li>
+  
+    <li>
+      <a href="/speakers/#Santhoshini" class="tag">Santhoshini
+        
+        
+        <span>(6)</span>
+      </a>
+    </li>
+  
+    <li>
+      <a href="/speakers/#Santhoshini and Chi-Ning" class="tag">Santhoshini and Chi-Ning
+        
+        
+        <span>(1)</span>
+      </a>
+    </li>
+  
+    <li>
+      <a href="/speakers/#Sasha" class="tag">Sasha
+        
+        
+        <span>(2)</span>
+      </a>
+    </li>
+  
+    <li>
+      <a href="/speakers/#Shao-Heng" class="tag">Shao-Heng
+        
+        
+        <span>(1)</span>
+      </a>
+    </li>
+  
+    <li>
+      <a href="/speakers/#Shweta Jain" class="tag">Shweta Jain
+        
+        
+        <span>(1)</span>
+      </a>
+    </li>
+  
+    <li>
+      <a href="/speakers/#Sumegha" class="tag">Sumegha
+        
+        
+        <span>(2)</span>
+      </a>
+    </li>
+  
+    <li>
+      <a href="/speakers/#Ted" class="tag">Ted
+        
+        
+        <span>(5)</span>
+      </a>
+    </li>
+  
+    <li>
+      <a href="/speakers/#Thibaut" class="tag">Thibaut
+        
+        
+        <span>(4)</span>
+      </a>
+    </li>
+  
+    <li>
+      <a href="/speakers/#Tim Chu" class="tag">Tim Chu
+        
+        
+        <span>(1)</span>
+      </a>
+    </li>
+  
+    <li>
+      <a href="/speakers/#Trivia night" class="tag">Trivia night
+        
+        
+        <span>(1)</span>
+      </a>
+    </li>
+  
+    <li>
+      <a href="/speakers/#Tselil" class="tag">Tselil
+        
+        
+        <span>(1)</span>
+      </a>
+    </li>
+  
+    <li>
+      <a href="/speakers/#Xinyu" class="tag">Xinyu
+        
+        
+        <span>(1)</span>
+      </a>
+    </li>
+  
+    <li>
+      <a href="/speakers/#Yeongwoo" class="tag">Yeongwoo
+        
+        
+        <span>(1)</span>
+      </a>
+    </li>
+  
+    <li>
+      <a href="/speakers/#Yi-Hsiu" class="tag">Yi-Hsiu
+        
+        
+        <span>(1)</span>
+      </a>
+    </li>
+  
+    <li>
+      <a href="/speakers/#Yihui" class="tag">Yihui
+        
+        
+        <span>(1)</span>
+      </a>
+    </li>
+  
+    <li>
+      <a href="/speakers/#Yuval Dagan" class="tag">Yuval Dagan
+        
+        
+        <span>(1)</span>
+      </a>
+    </li>
+  
+    <li>
+      <a href="/speakers/#Zach" class="tag">Zach
+        
+        
+        <span>(1)</span>
+      </a>
+    </li>
+  
+</ul>
+
+
+<h1>Sign Up Sheet</h1>
+<iframe src="https://docs.google.com/forms/d/e/1FAIpQLScv4_w5Z4YNtR4sC60wTvQLk6JmILjRQvAF6DXuD8GvdOzwWw/viewform?embedded=true" class="signupsheet" height="800" frameborder="0" marginheight="0" marginwidth="0">Loading...</iframe>
+
+</div>
+
+    </div>
+
+    <script id="dsq-count-scr" src="//cnchou.disqus.com/count.js" async></script>
+  </body>
+
+  <!-- Footer -->
+
+<script>
+// collapse
+function myCollapse(id) {
+    var x = document.getElementById(id);
+    if (x.className.indexOf("w3-show") == -1) {
+        x.className += " w3-show";
+    } else {
+        x.className = x.className.replace(" w3-show", "");
+    }
+    id_but = id.concat("-but");
+    var y = document.getElementById(id_but);
+    if (y != null) {
+      if (y.className.indexOf("fa-chevron-circle-down") != -1) {
+        y.className = y.className.replace(" fa-chevron-circle-down", " fa-chevron-circle-up");
+      } else {
+        y.className = y.className.replace(" fa-chevron-circle-up", " fa-chevron-circle-down");
+      }
+    }
+}
+</script>
+
+<script>
+// colorbox
+ jQuery('a.gallery').colorbox();
+ $(".gallery").colorbox({
+  width: "60%"
+});
+</script>
+
+<script>
+// sidebar collapse
+function sidebar_open() {
+  document.getElementById("mySidebar").classList.remove("w3-hide-small");
+  document.getElementById("mySmallSidebar").classList.add("w3-hide-small");
+}
+function sidebar_close() {
+  document.getElementById("mySidebar").classList.add("w3-hide-small");
+  document.getElementById("mySmallSidebar").classList.remove("w3-hide-small");
+}
+</script>
+
+
+</html>
